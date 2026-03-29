@@ -18,26 +18,24 @@ const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="min-h-screen flex items-center">
-            <div className="flex flex-col items-center gap-16 w-full mx-auto text-center">
-                <div className="flex flex-col items-center gap-4">
-                    <h2 className="text-3xl text-violet-600 font-bold">My technicall skills</h2>
-                    <p className="text-lg font-semibold text-center">
-                        I have developed a variety of technical skills throughout my career as a frontend developer,
-                        <br />
-                        with a strong focus on modern technologies
-                    </p>
-                </div>
-
-                <ul className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                    {technologies.map((tech) => (
-                        <li className="border border-gray-600 rounded-md flex items-center gap-4 p-4">
-                            {tech.icon}
-                            <span className="text-2xl font-semibold">{tech.name}</span>
-                        </li>
-                    ))}
-                </ul>
+        <section id="skills" className="min-h-screen flex flex-col justify-center gap-16 w-full mx-auto text-center">
+            <div className="flex flex-col items-center gap-4">
+                <h2 className="text-3xl text-violet-600 font-bold">My technicall skills</h2>
+                <p className="text-lg font-semibold text-center">
+                    I have developed a variety of technical skills throughout my career as a frontend developer,
+                    <br />
+                    with a strong focus on modern technologies
+                </p>
             </div>
+
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                {technologies.map((tech) => (
+                    <li className="border border-gray-600 rounded-md flex items-center justify-center gap-4 p-4 transition-transform hover:translate-y-0.5">
+                        {tech.icon}
+                        <span className="text-2xl font-semibold text-nowrap">{tech.name}</span>
+                    </li>
+                ))}
+            </ul>
         </section>
     );
 };

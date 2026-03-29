@@ -4,7 +4,10 @@ const Card = ({ infocard }: any) => {
     const { id, icon, title, description } = infocard;
 
     return (
-        <div id={id} className="border border-gray-700 rounded-md flex flex-col gap-4 p-4">
+        <div
+            id={id}
+            className="border border-gray-700 rounded-md flex flex-col gap-4 p-4 transition-transform hover:translate-y-0.5"
+        >
             <div className="bg-gray-600 h-12 w-12 flex items-center justify-center rounded-md">{icon}</div>
             <h3 className="text-2xl font-bold">{title}</h3>
             <p className="text-lg font-semibold">{description}</p>
@@ -41,7 +44,7 @@ const About = () => {
     ];
 
     return (
-        <div id="#about" className="min-h-screen grid grid-cols-2 items-center">
+        <div id="about" className="min-h-screen grid grid-cols-1 gap-8 lg:grid-cols-2 items-center">
             <div className="flex flex-col gap-8">
                 <h2 className="text-violet-600 font-bold text-4xl">
                     Frontend developer for the user
@@ -54,8 +57,8 @@ const About = () => {
 
                 <p className="font-semibold text-md text-violet-600">
                     Shall we work together?{" "}
-                    <a>
-                        <span className="text-violet-600 underline cursor-pointer">Contact me.</span>
+                    <a href="#contact">
+                        <span className="text-violet-600 hover:underline cursor-pointer">Contact me.</span>
                     </a>
                 </p>
             </div>

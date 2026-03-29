@@ -2,7 +2,7 @@ import { MdEmail, MdGpsFixed, MdPhone } from "react-icons/md";
 
 const Contact = () => {
     return (
-        <div className="flex flex-col min-h-screen gap-8">
+        <div id="contact" className="flex flex-col justify-center min-h-screen gap-8">
             <div className="flex flex-col items-center gap-4">
                 <h2 className="text-3xl font-bold text-violet-600">Tell my about your project</h2>
                 <p className="text-lg font-semibold text-center">
@@ -11,7 +11,7 @@ const Contact = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <ul className="flex flex-col gap-8">
                     {/* Email */}
                     <li className="flex border border-gray-700 rounded-md p-4 gap-4">
@@ -23,7 +23,7 @@ const Contact = () => {
                             <p>Email</p>
 
                             <div className="flex flex-col">
-                                <p>darioalejandromartinezotano@gmail.com</p>
+                                <p>martinezotano@gmail.com</p>
                                 <a className="text-violet-600 hover:underline cursor-pointer">Send message</a>
                             </div>
                         </div>

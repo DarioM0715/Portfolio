@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useIsDesktop } from "./useIsDestop";
 import { BiMenu, BiX } from "react-icons/bi";
+import { DonwloadCv } from "./DownloadCv";
 
 const Header = () => {
     const isDesktop = useIsDesktop(1024);
@@ -47,8 +48,8 @@ const Header = () => {
     const navs = [
         { id: 1, name: "Home", href: "#home" },
         { id: 2, name: "About me", href: "#about" },
+        { id: 4, name: "Projects", href: "#projects" },
         { id: 3, name: "Skills", href: "#skills" },
-        { id: 4, name: "Projects", href: "#href" },
         { id: 5, name: "Contact", href: "#contact" },
     ];
 
@@ -56,7 +57,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[4vw] py-4 border-b border-gray-800 z-50">
+            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[4vw] py-4 z-50">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/" className="text-white transition-all duration-150 hover:scale-105">
                         <span className="text-violet-600">Dario.</span>
@@ -89,7 +90,11 @@ const Header = () => {
                 )}
 
                 {!isDesktop && (
-                    <Button onClick={openMenu} aria-label="Abrir menú">
+                    <Button
+                        className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                        onClick={openMenu}
+                        aria-label="Abrir menú"
+                    >
                         <BiMenu size={24} />
                     </Button>
                 )}
@@ -110,7 +115,11 @@ const Header = () => {
                         }`}
                     >
                         <div className="flex justify-end">
-                            <Button onClick={closeMenu} aria-label="Cerrar menú" className="p-2">
+                            <Button
+                                onClick={closeMenu}
+                                aria-label="Cerrar menú"
+                                className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                            >
                                 <BiX size={28} />
                             </Button>
                         </div>
@@ -121,7 +130,7 @@ const Header = () => {
                                     <a
                                         href={nav.href}
                                         onClick={closeMenu}
-                                        className="block py-2 hover:text-violet-600 transition"
+                                        className="block py-2 hover:text-violet-600 transition border-b border-gray-700"
                                     >
                                         {nav.name}
                                     </a>
@@ -129,8 +138,9 @@ const Header = () => {
                             ))}
                         </ul>
 
-                        <div className="mt-auto pt-6 border-t border-gray-700">
+                        <div className="mt-auto pt-6 border-t border-gray-700 flex items-center justify-between">
                             <LanguageSwitcher />
+                            <DonwloadCv />
                         </div>
                     </div>
                 </div>

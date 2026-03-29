@@ -2,10 +2,10 @@ import { Button } from "./Button";
 
 const Home = () => {
     return (
-        <section id="#home" className="flex min-h-screen items-center ">
+        <section id="home" className="flex min-h-screen items-center ">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col">
-                    <h1 className="text-7xl lg:text-8xl font-bold">
+                    <h1 className="text-5xl lg:text-8xl font-bold">
                         Creating digital
                         <br />
                         experiences
@@ -25,7 +25,7 @@ const Home = () => {
                         <a href="#projects">View projects</a>
                     </Button>
 
-                    <Button className=" transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800">
+                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800">
                         <a href="#contact">Contact</a>
                     </Button>
                 </div>

@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { BsTypescript } from "react-icons/bs";
 import { SiTailwindcss } from "react-icons/si";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Project } from "../types";
 import { Dialog } from "./Dialog";
 
@@ -55,6 +55,17 @@ const Card = ({ project }: { project: Project }) => {
 const Projects = () => {
     const [open, setOpen] = useState(false);
 
+    useEffect(() => {
+        if (open) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [open]);
+
     const projects: Project[] = [
         {
             id: 1,
@@ -101,55 +112,55 @@ const Projects = () => {
                 { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
             ],
         },
-        {
-            id: 4,
-            title: "My portfolio",
-            description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
-        {
-            id: 5,
-            title: "My portfolio",
-            description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
-        {
-            id: 6,
-            title: "My portfolio",
-            description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
+        // {
+        //     id: 4,
+        //     title: "My portfolio",
+        //     description:
+        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
+        //     image: portfolioPicture,
+        //     altImage: "",
+        //     urlProd: "",
+        //     urlGithub: "",
+        //     technologies: [
+        //         { id: 1, name: "React", icon: <FaReact /> },
+        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+        //     ],
+        // },
+        // {
+        //     id: 5,
+        //     title: "My portfolio",
+        //     description:
+        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
+        //     image: portfolioPicture,
+        //     altImage: "",
+        //     urlProd: "",
+        //     urlGithub: "",
+        //     technologies: [
+        //         { id: 1, name: "React", icon: <FaReact /> },
+        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+        //     ],
+        // },
+        // {
+        //     id: 6,
+        //     title: "My portfolio",
+        //     description:
+        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
+        //     image: portfolioPicture,
+        //     altImage: "",
+        //     urlProd: "",
+        //     urlGithub: "",
+        //     technologies: [
+        //         { id: 1, name: "React", icon: <FaReact /> },
+        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+        //     ],
+        // },
     ];
 
     return (
-        <div className="flex items-center flex-col gap-8 p-4">
+        <div id="projects" className="min-h-screen flex items-center justify-center flex-col gap-8 p-4">
             <div className="flex items-center flex-col gap-2">
                 <h2 className="text-4xl text-violet-600 font-bold">My Recent Work</h2>
                 <p className="text-lg font-semibold">Here is a selection of projects I have developed</p>
@@ -165,7 +176,7 @@ const Projects = () => {
                 </ul>
             </div>
 
-            <Button className="flex items-center gap-4 p-4 rounded-md bg-gray-700 shadow-md shadow-gray-700">
+            <Button className="flex text-nowrap items-center gap-4 p-4 rounded-md transform transition-all duration-150  hover:translate-y-1  bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800">
                 <span>View more projects on GitHub</span>
                 <FiGithub size={24} />
             </Button>
