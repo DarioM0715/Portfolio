@@ -7,6 +7,7 @@ import { SiTailwindcss } from "react-icons/si";
 import { useEffect, useState } from "react";
 import type { Project } from "../types";
 import { Dialog } from "./Dialog";
+import { useLanguage } from "../context/LanguageContext";
 
 const Card = ({ project }: { project: Project }) => {
     const { id, title, description, image, altImage, urlProd, urlGithub, technologies } = project;
@@ -53,6 +54,7 @@ const Card = ({ project }: { project: Project }) => {
 };
 
 const Projects = () => {
+    const { t } = useLanguage();
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -162,8 +164,8 @@ const Projects = () => {
     return (
         <div id="projects" className="min-h-screen flex items-center justify-center flex-col gap-8 p-4">
             <div className="flex items-center flex-col gap-2">
-                <h2 className="text-4xl text-violet-600 font-bold">My Recent Work</h2>
-                <p className="text-lg font-semibold">Here is a selection of projects I have developed</p>
+                <h2 className="text-4xl text-violet-600 font-bold">{t("projects_title")}</h2>
+                <p className="text-lg font-semibold">{t("projects_description")}</p>
             </div>
 
             <div>

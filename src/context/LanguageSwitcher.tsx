@@ -1,20 +1,30 @@
 import { useLanguage } from "../context/LanguageContext";
-import { BiFlag } from "react-icons/bi";
 
 export const LanguageSwitcher = () => {
     const { language, setLanguage } = useLanguage();
 
     return (
-        <div>
-            {language === "es" ? (
-                <button onClick={() => setLanguage("en")} disabled={language === "en"}>
-                    <BiFlag className="text-blue-600" />
-                </button>
-            ) : (
-                <button onClick={() => setLanguage("es")} disabled={language === "es"}>
-                    <BiFlag className="text-red-600" />
-                </button>
-            )}
+        <div className="flex gap-2">
+            <button
+                onClick={() => setLanguage("en")}
+                disabled={language === "en"}
+                className={`text-2xl transition-transform hover:scale-110 ${
+                    language === "en" ? "opacity-100" : "opacity-60 hover:opacity-100"
+                }`}
+                title="English"
+            >
+                🇺🇸
+            </button>
+            <button
+                onClick={() => setLanguage("es")}
+                disabled={language === "es"}
+                className={`text-2xl transition-transform hover:scale-110 ${
+                    language === "es" ? "opacity-100" : "opacity-60 hover:opacity-100"
+                }`}
+                title="Español"
+            >
+                🇪🇸
+            </button>
         </div>
     );
 };

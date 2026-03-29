@@ -1,7 +1,9 @@
 import { Button } from "./Button";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 const Footer = () => {
+    const { t } = useLanguage();
     return (
         <footer className="bg-gray-900 flex flex-col p-[4vw] mt-[4vw] border-t border-gray-800">
             <div className="flex items-center justify-between gap-2">
@@ -15,9 +17,7 @@ const Footer = () => {
                         Frontend development passionate about creating exceptional <br /> digital experiencies.
                     </p>
 
-                    <p>
-                        @<span className="text-violet-600">Dario.</span>portfolio All rights reserved
-                    </p>
+                    <p>{t("footer_copyright")}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                     <Button icon className="border border-gray-700 rounded-full p-3 flex items-center">

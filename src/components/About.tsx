@@ -1,4 +1,5 @@
 import { BiTag, BiSolidPencil } from "react-icons/bi";
+import { useLanguage } from "../context/LanguageContext";
 
 const Card = ({ infocard }: any) => {
     const { id, icon, title, description } = infocard;
@@ -16,49 +17,45 @@ const Card = ({ infocard }: any) => {
 };
 
 const About = () => {
+    const { t } = useLanguage();
     const infocards = [
         {
             id: 1,
             icon: <BiTag size={24} />,
-            title: "Frontend developer",
-            description: "Creation of modern interfaces with HTML, CSS, JavaScript and frameworks like react.",
+            title: t("about_card_developer"),
+            description: t("about_card_dev_desc"),
         },
         {
             id: 2,
             icon: "",
-            title: "Reponsive Design",
-            description: "Website development thah works saemlessly across all devices and screen sizes.",
+            title: t("about_card_responsive"),
+            description: t("about_card_responsive_desc"),
         },
         {
             id: 3,
             icon: "",
-            title: "UI/UX Design",
-            description: "Creating intuitive and aesthetically pleasing interfaces focused on user experience.",
+            title: t("about_card_uiux"),
+            description: t("about_card_uiux_desc"),
         },
         {
             id: 4,
             icon: <BiSolidPencil size={24} />,
-            title: "Web Performance",
-            description: "Optimizing website performance to improve speed and overall browsing experience.",
+            title: t("about_card_performance"),
+            description: t("about_card_performance_desc"),
         },
     ];
 
     return (
         <div id="about" className="min-h-screen grid grid-cols-1 gap-8 lg:grid-cols-2 items-center">
             <div className="flex flex-col gap-8">
-                <h2 className="text-violet-600 font-bold text-4xl">
-                    Frontend developer for the user
-                    <br /> experience
-                </h2>
+                <h2 className="text-violet-600 font-bold text-4xl">{t("about_title")}</h2>
 
-                <p className="font-semibold text-lg">
-                    I am a frontend developer specialized in creating attractive and functional user <br /> interfaces
-                </p>
+                <p className="font-semibold text-lg">{t("about_description")}</p>
 
                 <p className="font-semibold text-md text-violet-600">
-                    Shall we work together?{" "}
+                    {t("about_question")}{" "}
                     <a href="#contact">
-                        <span className="text-violet-600 hover:underline cursor-pointer">Contact me.</span>
+                        <span className="text-violet-600 hover:underline cursor-pointer">{t("about_contactMe")}</span>
                     </a>
                 </p>
             </div>

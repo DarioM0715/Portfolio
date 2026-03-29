@@ -5,8 +5,10 @@ import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useIsDesktop } from "./useIsDestop";
 import { BiMenu, BiX } from "react-icons/bi";
 import { DonwloadCv } from "./DownloadCv";
+import { useLanguage } from "../context/LanguageContext";
 
 const Header = () => {
+    const { t } = useLanguage();
     const isDesktop = useIsDesktop(1024);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
@@ -46,11 +48,11 @@ const Header = () => {
     };
 
     const navs = [
-        { id: 1, name: "Home", href: "#home" },
-        { id: 2, name: "About me", href: "#about" },
-        { id: 4, name: "Projects", href: "#projects" },
-        { id: 3, name: "Skills", href: "#skills" },
-        { id: 5, name: "Contact", href: "#contact" },
+        { id: 1, name: t("nav_home"), href: "#home" },
+        { id: 2, name: t("nav_about"), href: "#about" },
+        { id: 4, name: t("nav_projects"), href: "#projects" },
+        { id: 3, name: t("nav_skills"), href: "#skills" },
+        { id: 5, name: t("nav_contact"), href: "#contact" },
     ];
 
     const closeMenu = () => setIsMenuOpen(false);

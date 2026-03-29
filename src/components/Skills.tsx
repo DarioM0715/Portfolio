@@ -2,8 +2,10 @@ import { BsJavascript, BsTypescript } from "react-icons/bs";
 import { FaCss3, FaHtml5, FaPython, FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiDjango, SiExpress, SiOdoo } from "react-icons/si";
+import { useLanguage } from "../context/LanguageContext";
 
 const Skills = () => {
+    const { t } = useLanguage();
     const technologies = [
         { id: 1, icon: <FaHtml5 size={32} />, name: "HTML5" },
         { id: 2, icon: <FaCss3 size={32} />, name: "CSS3" },
@@ -20,12 +22,8 @@ const Skills = () => {
     return (
         <section id="skills" className="min-h-screen flex flex-col justify-center gap-16 w-full mx-auto text-center">
             <div className="flex flex-col items-center gap-4">
-                <h2 className="text-3xl text-violet-600 font-bold">My technicall skills</h2>
-                <p className="text-lg font-semibold text-center">
-                    I have developed a variety of technical skills throughout my career as a frontend developer,
-                    <br />
-                    with a strong focus on modern technologies
-                </p>
+                <h2 className="text-3xl text-violet-600 font-bold">{t("skills_title")}</h2>
+                <p className="text-lg font-semibold text-center">{t("skills_description")}</p>
             </div>
 
             <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
