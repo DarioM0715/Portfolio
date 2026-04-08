@@ -46,7 +46,7 @@ export const Dialog = ({ title, children, open, onClose, ariaLabel = "Dialog" }:
                         type="button"
                         aria-label="Cerrar diálogo"
                         onClick={onClose}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-md cursor-pointer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-md cursor-pointer hover:border hover:border-gray-600"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

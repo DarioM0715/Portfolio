@@ -5,7 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 const Footer = () => {
     const { t } = useLanguage();
     return (
-        <footer className="bg-gray-900 flex flex-col p-[4vw] mt-[4vw] border-t border-gray-800">
+        <footer className="bg-gray-900 flex flex-col px-[6vw] py-[4vw] mt-[6vw] border-t border-gray-800">
             <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col gap-4">
                     <a href="/" className="text-xl font-bold">
@@ -20,11 +20,11 @@ const Footer = () => {
                     <p>{t("footer_copyright")}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center">
+                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
                         <FiGithub size={24} />
                     </Button>
 
-                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center">
+                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
                         <FiLinkedin size={24} />
                     </Button>
                 </div>

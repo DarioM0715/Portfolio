@@ -1,10 +1,11 @@
 import { MdEmail, MdGpsFixed, MdPhone } from "react-icons/md";
 import { useLanguage } from "../context/LanguageContext";
+import { Button } from "./Button";
 
 const Contact = () => {
     const { t } = useLanguage();
     return (
-        <div id="contact" className="flex flex-col justify-center min-h-screen gap-8">
+        <div id="contact" className="flex flex-col justify-center py-32 lg:min-h-screen lg:py-0 gap-8 px-[6vw]">
             <div className="flex flex-col items-center gap-4">
                 <h2 className="text-3xl font-bold text-violet-600">{t("contact_title")}</h2>
                 <p className="text-lg font-semibold text-center">{t("contact_description")}</p>
@@ -13,7 +14,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <ul className="flex flex-col gap-8">
                     {/* Email */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4">
+                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
                             <MdEmail size={24} />
                         </div>
@@ -31,7 +32,7 @@ const Contact = () => {
                     </li>
 
                     {/* Phone */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4">
+                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
                             <MdPhone size={24} />
                         </div>
@@ -49,7 +50,7 @@ const Contact = () => {
                     </li>
 
                     {/* Location */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4">
+                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
                             <MdGpsFixed size={24} />
                         </div>
@@ -61,8 +62,8 @@ const Contact = () => {
                     </li>
                 </ul>
 
-                <div className="flex flex-col gap-4 p-4 border border-gray-700 rounded-lg">
-                    <div className="flex flex-col">
+                <div className="flex flex-col gap-8 p-4 border border-gray-700 rounded-lg">
+                    <div className="flex flex-col gap-1">
                         <p>{t("contact_name")}</p>
                         <input
                             className="p-2 border border-gray-700 rounded-md"
@@ -70,7 +71,7 @@ const Contact = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
                         <p>{t("contact_emailLabel")}</p>
                         <input
                             className="p-2 border border-gray-700 rounded-md"
@@ -78,7 +79,7 @@ const Contact = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
                         <p>Message</p>
                         <input
                             className="p-2 border border-gray-700 rounded-md"
@@ -86,9 +87,9 @@ const Contact = () => {
                         />
                     </div>
 
-                    <button className="p-2 rounded-md bg-violet-700 shadow-md shadow-violet-700">
+                    <Button className="transform transition-all duration-150 p-2 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700">
                         {t("contact_sendBtn")}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

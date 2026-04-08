@@ -59,7 +59,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[4vw] py-4 z-50">
+            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-4 z-50">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/" className="text-white transition-all duration-150 hover:scale-105">
                         <span className="text-violet-600">Dario.</span>

@@ -7,7 +7,7 @@ const Card = ({ infocard }: any) => {
     return (
         <div
             id={id}
-            className="border border-gray-700 rounded-md flex flex-col gap-4 p-4 transition-transform hover:translate-y-0.5"
+            className="border border-gray-700 rounded-md flex flex-col gap-4 p-4 transition-transform hover:translate-y-0.5 h-full"
         >
             <div className="bg-gray-600 h-12 w-12 flex items-center justify-center rounded-md">{icon}</div>
             <h3 className="text-2xl font-bold">{title}</h3>
@@ -46,8 +46,11 @@ const About = () => {
     ];
 
     return (
-        <div id="about" className="min-h-screen grid grid-cols-1 gap-8 lg:grid-cols-2 items-center">
-            <div className="flex flex-col gap-8">
+        <div
+            id="about"
+            className="py-16 lg:min-h-screen grid grid-cols-1 gap-8 xl:grid-cols-2 items-center border-b border-gray-800 px-[6vw]"
+        >
+            <div className="flex flex-col gap-2">
                 <h2 className="text-violet-600 font-bold text-4xl">{t("about_title")}</h2>
 
                 <p className="font-semibold text-lg">{t("about_description")}</p>

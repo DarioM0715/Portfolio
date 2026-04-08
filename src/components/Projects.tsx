@@ -1,5 +1,4 @@
 import { FaReact } from "react-icons/fa";
-import portfolioPicture from "../assets/images/Captura de pantalla 2026-03-16 001904.png";
 import { Button } from "./Button";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { BsTypescript } from "react-icons/bs";
@@ -9,42 +8,29 @@ import type { Project } from "../types";
 import { Dialog } from "./Dialog";
 import { useLanguage } from "../context/LanguageContext";
 
+import portfolioPicture from "../assets/images/Captura de pantalla 2026-03-16 001904.png";
+
 const Card = ({ project }: { project: Project }) => {
     const { id, title, description, image, altImage, urlProd, urlGithub, technologies } = project;
 
     return (
-        <div id={String(id)} className="bg-gray-950 rounded-lg relative">
-            <div>
-                <div className="overflow-hidden rounded-lg">
-                    <img
-                        alt={altImage}
-                        className="transition-transform duration-300 hover:scale-110 hover:-rotate-2 transform-gpu cursor-pointer"
-                        src={image}
-                    />
-                </div>
-                <div className="flex items-center gap-4 absolute top-0 bottom-6 right-4">
-                    <Button icon className="border border-gray-600 p-2 rounded-full">
-                        <a href={urlGithub}>
-                            <FiGithub size={24} />
-                        </a>
-                    </Button>
-
-                    <Button icon className="border border-gray-600 p-2 rounded-full">
-                        <a href={urlProd}>
-                            <FiLinkedin size={24} />
-                        </a>
-                    </Button>
-                </div>
+        <div id={String(id)} className="bg-gray-950 rounded-lg relative max-h-96">
+            <div className="overflow-hidden rounded-lg max-h-44">
+                <img
+                    alt={altImage}
+                    className="transition-transform duration-300 hover:scale-110 hover:-rotate-2 transform-gpu cursor-pointer"
+                    src={image}
+                />
             </div>
 
             <div className="p-4 flex flex-col gap-4">
                 <h3 className="text-2xl font-bold">{title}</h3>
-                <p className="font-semibold">{description}</p>
-                <ul className="flex gap-4 items-center">
+                {/* <p className="font-semibold">{description}</p> */}
+                <ul className="flex flex-col sm:flex-row gap-4">
                     {technologies.map((tech) => (
                         <li className="flex items-center gap-1">
                             {tech.icon}
-                            {tech.name}
+                            {/* {tech.name} */}
                         </li>
                     ))}
                 </ul>
@@ -56,6 +42,7 @@ const Card = ({ project }: { project: Project }) => {
 const Projects = () => {
     const { t } = useLanguage();
     const [open, setOpen] = useState(false);
+    const [project, setProject] = useState<Project | null>();
 
     useEffect(() => {
         if (open) {
@@ -67,6 +54,15 @@ const Projects = () => {
             document.body.style.overflow = "unset";
         };
     }, [open]);
+
+    const handleOpen = (project: any) => {
+        setOpen(true);
+        setProject(project);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const projects: Project[] = [
         {
@@ -114,56 +110,14 @@ const Projects = () => {
                 { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
             ],
         },
-        // {
-        //     id: 4,
-        //     title: "My portfolio",
-        //     description:
-        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-        //     image: portfolioPicture,
-        //     altImage: "",
-        //     urlProd: "",
-        //     urlGithub: "",
-        //     technologies: [
-        //         { id: 1, name: "React", icon: <FaReact /> },
-        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-        //     ],
-        // },
-        // {
-        //     id: 5,
-        //     title: "My portfolio",
-        //     description:
-        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-        //     image: portfolioPicture,
-        //     altImage: "",
-        //     urlProd: "",
-        //     urlGithub: "",
-        //     technologies: [
-        //         { id: 1, name: "React", icon: <FaReact /> },
-        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-        //     ],
-        // },
-        // {
-        //     id: 6,
-        //     title: "My portfolio",
-        //     description:
-        //         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-        //     image: portfolioPicture,
-        //     altImage: "",
-        //     urlProd: "",
-        //     urlGithub: "",
-        //     technologies: [
-        //         { id: 1, name: "React", icon: <FaReact /> },
-        //         { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-        //         { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-        //     ],
-        // },
     ];
 
     return (
-        <div id="projects" className="min-h-screen flex items-center justify-center flex-col gap-8 p-4">
-            <div className="flex items-center flex-col gap-2">
+        <div
+            id="projects"
+            className="py-16 lg:min-h-screen lg:py-0 flex items-center justify-center flex-col gap-8 border-b border-gray-800 px-[6vw]"
+        >
+            <div className="flex items-center flex-col gap-2 ">
                 <h2 className="text-4xl text-violet-600 font-bold">{t("projects_title")}</h2>
                 <p className="text-lg font-semibold">{t("projects_description")}</p>
             </div>
@@ -171,7 +125,7 @@ const Projects = () => {
             <div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project) => (
-                        <li onClick={() => setOpen(true)}>
+                        <li onClick={() => handleOpen(project)}>
                             <Card project={project} />
                         </li>
                     ))}
@@ -183,11 +137,44 @@ const Projects = () => {
                 <FiGithub size={24} />
             </Button>
 
-            <Dialog title="Titulo del proyecto" open={open} onClose={() => setOpen(false)}>
-                Elemento de ejemplo
+            <Dialog title={project?.title || ""} open={open} onClose={() => handleClose()}>
+                <div id={String(project?.id)} className="rounded-lg relative">
+                    <div className="overflow-hidden rounded-lg">
+                        <img alt={project?.altImage} src={project?.image} />
+                    </div>
+
+                    <div className="p-4 flex flex-col gap-4">
+                        <h3 className="text-2xl font-bold">{project?.title}</h3>
+                        {/* <p className="font-semibold">{description}</p> */}
+                        <ul className="flex flex-col sm:flex-row gap-4">
+                            {project?.technologies.map((tech) => (
+                                <li className="flex items-center gap-1">
+                                    {tech.icon}
+                                    {/* {tech.name} */}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </Dialog>
         </div>
     );
 };
 
 export default Projects;
+
+{
+    /* <div className="flex items-center gap-4 absolute top-0 bottom-6 right-4">
+                    <Button icon className="border border-gray-600 p-2 rounded-full">
+                        <a href={urlGithub}>
+                            <FiGithub size={24} />
+                        </a>
+                    </Button>
+
+                    <Button icon className="border border-gray-600 p-2 rounded-full">
+                        <a href={urlProd}>
+                            <FiLinkedin size={24} />
+                        </a>
+                    </Button>
+                </div> */
+}
