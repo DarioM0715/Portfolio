@@ -4,13 +4,10 @@ import { useLanguage } from "../context/LanguageContext";
 const Home = () => {
     const { t } = useLanguage();
     return (
-        <section
-            id="home"
-            className="flex py-16 lg:min-h-screen lg:py-0 items-center border-b border-gray-800 px-[6vw]"
-        >
+        <section id="home" className="flex min-h-screen items-center border-b border-gray-700 px-[6vw]">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col">
-                    <h1 className="text-5xl lg:text-8xl font-bold">
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
                         {t("home_title")}
                         <br />
                         {t("home_subtitle1")}
@@ -20,7 +17,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <p className="font-semibold text-xl">{t("home_description")}</p>
+                    <p className="font-semibold text-xl lg:text-2xl">{t("home_description")}</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -34,7 +31,17 @@ const Home = () => {
                 </div>
             </div>
 
-            <div>{/* Aqui deberia poner una imagen o animacion en este espacio vacio */}</div>
+            <div className="hidden lg:flex lg:flex-1 lottie-holder">
+                {/* Replace the src with any Lottie JSON URL you like from LottieFiles */}
+                <lottie-player
+                    src="https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json"
+                    background="transparent"
+                    speed="1"
+                    loop
+                    autoplay
+                    style={{ width: "420px", height: "420px" }}
+                ></lottie-player>
+            </div>
         </section>
     );
 };

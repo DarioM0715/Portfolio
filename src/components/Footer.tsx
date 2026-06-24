@@ -5,29 +5,26 @@ import { useLanguage } from "../context/LanguageContext";
 const Footer = () => {
     const { t } = useLanguage();
     return (
-        <footer className="bg-gray-900 flex flex-col px-[6vw] py-[4vw] mt-[6vw] border-t border-gray-800">
-            <div className="flex items-center justify-between gap-2">
-                <div className="flex flex-col gap-4">
-                    <a href="/" className="text-xl font-bold">
-                        <span className="text-violet-600 ">Dario.</span>
-                        portfolio
-                    </a>
+        <footer className="bg-gray-900 flex flex-col md:flex-row items-start md:items-center justify-between px-[6vw] py-[4vw] mt-[6vw] border-t border-gray-800 gap-6">
+            <div className="flex flex-col gap-4 max-w-lg">
+                <a href="/" className="text-xl font-bold">
+                    <span className="text-violet-600 ">Dario.</span>
+                    portfolio
+                </a>
 
-                    <p>
-                        Frontend development passionate about creating exceptional <br /> digital experiencies.
-                    </p>
+                <p>{t("footer_description")}</p>
 
-                    <p>{t("footer_copyright")}</p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
-                        <FiGithub size={24} />
-                    </Button>
+                <p>{t("footer_copyright")}</p>
+            </div>
 
-                    <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
-                        <FiLinkedin size={24} />
-                    </Button>
-                </div>
+            <div className="flex items-center gap-4 ml-auto">
+                <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
+                    <FiGithub size={24} />
+                </Button>
+
+                <Button icon className="border border-gray-700 rounded-full p-3 flex items-center hover:-rotate-4">
+                    <FiLinkedin size={24} />
+                </Button>
             </div>
         </footer>
     );

@@ -23,7 +23,7 @@ const Contact = () => {
                             <p>{t("contact_email")}</p>
 
                             <div className="flex flex-col">
-                                <p>martinezotano@gmail.com</p>
+                                <p>dariomartinezotano@gmail.com</p>
                                 <a className="text-violet-600 hover:underline cursor-pointer">
                                     {t("contact_sendMessage")}
                                 </a>

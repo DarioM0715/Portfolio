@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react";
 import { LanguageSwitcher } from "../context/LanguageSwitcher";
 import { Button } from "./Button";
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiSun, FiMoon } from "react-icons/fi";
+import { useTheme } from "../context/ThemeContext";
 import { useIsDesktop } from "./useIsDestop";
 import { BiMenu, BiX } from "react-icons/bi";
 import { DonwloadCv } from "./DownloadCv";
 import { useLanguage } from "../context/LanguageContext";
+
+const ThemeToggleButton = () => {
+    const { theme, toggle } = useTheme();
+    return (
+        <button onClick={toggle} aria-label="Toggle theme" className="theme-toggle">
+            <FiSun className={`${theme === "light" ? "text-yellow-400" : "opacity-40"}`} />
+            <FiMoon className={`${theme === "dark" ? "text-yellow-300" : "opacity-40"}`} />
+        </button>
+    );
+};
 
 const Header = () => {
     const { t } = useLanguage();
@@ -59,7 +70,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-4 z-50">
+            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/" className="text-white transition-all duration-150 hover:scale-105">
                         <span className="text-violet-600">Dario.</span>
@@ -76,18 +87,19 @@ const Header = () => {
                 </div>
 
                 {isDesktop && (
-                    <div className="flex items-center gap-10">
+                    <div className="text-lg flex items-center gap-6">
                         <ul className="flex items-center gap-10 font-semibold text-md text-white">
                             {navs.map((nav) => (
-                                <li
-                                    key={nav.id}
-                                    className="transition duration-150 hover:scale-110 hover:text-violet-600"
-                                >
+                                <li key={nav.id} className="transition duration-150 hover:scale-110 hover:text-violet-600 nav-item">
                                     <a href={nav.href}>{nav.name}</a>
                                 </li>
                             ))}
                         </ul>
+
                         <LanguageSwitcher />
+
+                        {/* Theme toggle */}
+                        <ThemeToggleButton />
                     </div>
                 )}
 

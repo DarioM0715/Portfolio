@@ -1,0 +1,66 @@
+:root {
+  --bg: #0f1724;
+  --surface: #0b1220;
+  --muted: #94a3b8;
+  --accent: #7c3aed;
+  --accent-600: #6d28d9;
+  --text: #ffffff;
+}
+
+.light {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --muted: #475569;
+  --accent: #7c3aed;
+  --accent-600: #6d28d9;
+  --text: #0b1220;
+}
+
+.dark {
+  --bg: #0f1724;
+  --surface: #0b1220;
+  --muted: #94a3b8;
+  --accent: #7c3aed;
+  --accent-600: #6d28d9;
+  --text: #ffffff;
+}
+
+/* Header nav animated underline */
+.nav-item {
+  position: relative;
+  display: inline-block;
+}
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+.nav-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* Theme toggle basic styles */
+.theme-toggle {
+  width: 44px;
+  height: 32px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  gap: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.lottie-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

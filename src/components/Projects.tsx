@@ -14,23 +14,21 @@ const Card = ({ project }: { project: Project }) => {
     const { id, title, description, image, altImage, urlProd, urlGithub, technologies } = project;
 
     return (
-        <div id={String(id)} className="bg-gray-950 rounded-lg relative max-h-96">
-            <div className="overflow-hidden rounded-lg max-h-44">
+        <div id={String(id)} className="bg-gray-950 rounded-lg relative h-full">
+            <div className="overflow-hidden rounded-t-lg h-44">
                 <img
                     alt={altImage}
-                    className="transition-transform duration-300 hover:scale-110 hover:-rotate-2 transform-gpu cursor-pointer"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110 hover:-rotate-2 transform-gpu cursor-pointer"
                     src={image}
                 />
             </div>
 
             <div className="p-4 flex flex-col gap-4">
                 <h3 className="text-2xl font-bold">{title}</h3>
-                {/* <p className="font-semibold">{description}</p> */}
                 <ul className="flex flex-col sm:flex-row gap-4">
                     {technologies.map((tech) => (
-                        <li className="flex items-center gap-1">
+                        <li className="flex items-center gap-1" key={tech.id}>
                             {tech.icon}
-                            {/* {tech.name} */}
                         </li>
                     ))}
                 </ul>
@@ -110,12 +108,54 @@ const Projects = () => {
                 { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
             ],
         },
+        {
+            id: 4,
+            title: "Another project",
+            description: "Another example project",
+            image: portfolioPicture,
+            altImage: "",
+            urlProd: "",
+            urlGithub: "",
+            technologies: [
+                { id: 1, name: "React", icon: <FaReact /> },
+                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+            ],
+        },
+        {
+            id: 5,
+            title: "Side project",
+            description: "Side project",
+            image: portfolioPicture,
+            altImage: "",
+            urlProd: "",
+            urlGithub: "",
+            technologies: [
+                { id: 1, name: "React", icon: <FaReact /> },
+                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+            ],
+        },
+        {
+            id: 6,
+            title: "Experimental",
+            description: "Experimental project",
+            image: portfolioPicture,
+            altImage: "",
+            urlProd: "",
+            urlGithub: "",
+            technologies: [
+                { id: 1, name: "React", icon: <FaReact /> },
+                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
+                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+            ],
+        },
     ];
 
     return (
         <div
             id="projects"
-            className="py-16 lg:min-h-screen lg:py-0 flex items-center justify-center flex-col gap-8 border-b border-gray-800 px-[6vw]"
+            className="py-16 lg:h-screen lg:py-0 flex items-center justify-center flex-col gap-8 border-b border-gray-800 px-[6vw]"
         >
             <div className="flex items-center flex-col gap-2 ">
                 <h2 className="text-4xl text-violet-600 font-bold">{t("projects_title")}</h2>
@@ -123,9 +163,9 @@ const Projects = () => {
             </div>
 
             <div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-8 h-full">
                     {projects.map((project) => (
-                        <li onClick={() => handleOpen(project)}>
+                        <li key={project.id} onClick={() => handleOpen(project)} className="h-full">
                             <Card project={project} />
                         </li>
                     ))}

@@ -40,5 +40,6 @@
     "contact_emailPlaceholder": "Your email",
     "contact_messagePlaceholder": "How can I help you?",
     "contact_sendBtn": "Send Message",
-    "footer_copyright": "© 2026 Dario Martinez. All rights reserved."
+    "footer_copyright": "© 2026 Dario Martinez. All rights reserved.",
+    "footer_description": "Frontend development passionate about creating exceptional digital experiencies."
 }

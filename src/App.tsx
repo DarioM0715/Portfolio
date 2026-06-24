@@ -1,4 +1,5 @@
 import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 import Home from "./components/Home";
 import Projects from "./components/Projects";
@@ -10,13 +11,15 @@ import Layout from "./components/Layout";
 const App = () => {
     return (
         <LanguageProvider>
-            <Layout>
-                <Home />
-                <About />
-                <Projects />
-                <Skills />
-                <Contact />
-            </Layout>
+            <ThemeProvider>
+                <Layout>
+                    <Home />
+                    <About />
+                    <Projects />
+                    <Skills />
+                    <Contact />
+                </Layout>
+            </ThemeProvider>
         </LanguageProvider>
     );
 };
