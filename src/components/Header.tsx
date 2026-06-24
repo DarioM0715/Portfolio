@@ -11,9 +11,16 @@ import { useLanguage } from "../context/LanguageContext";
 const ThemeToggleButton = () => {
     const { theme, toggle } = useTheme();
     return (
-        <button onClick={toggle} aria-label="Toggle theme" className="theme-toggle">
-            <FiSun className={`${theme === "light" ? "text-yellow-400" : "opacity-40"}`} />
-            <FiMoon className={`${theme === "dark" ? "text-yellow-300" : "opacity-40"}`} />
+        <button
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className={`theme-toggle ${theme === "light" ? "light" : "dark"}`}
+        >
+            <div className="track">
+                <span className={`knob`}>
+                    {theme === "dark" ? <FiMoon /> : <FiSun />}
+                </span>
+            </div>
         </button>
     );
 };

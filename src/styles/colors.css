@@ -59,6 +59,37 @@
   border: 1px solid rgba(255,255,255,0.04);
 }
 
+.theme-toggle .track {
+  width: 36px;
+  height: 24px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 9999px;
+  position: relative;
+  padding: 3px;
+  box-sizing: border-box;
+}
+.theme-toggle .knob {
+  width: 18px;
+  height: 18px;
+  background: var(--surface);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-600);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), background 220ms;
+  transform: translateX(0);
+}
+.theme-toggle.light .knob {
+  transform: translateX(12px);
+}
+
+/* small icon styles inside knob */
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+}
+
 .lottie-holder {
   display: flex;
   align-items: center;

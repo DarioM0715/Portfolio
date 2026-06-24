@@ -1,4 +1,8 @@
-import { BiTag, BiSolidPencil } from "react-icons/bi";
+import { BiTag } from "react-icons/bi";
+import { FaMobileAlt, FaPaintBrush, FaTachometerAlt, FaReact } from "react-icons/fa";
+import { BsTypescript } from "react-icons/bs";
+import { SiTailwindcss } from "react-icons/si";
+import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
 
 const Card = ({ infocard }: any) => {
@@ -27,19 +31,19 @@ const About = () => {
         },
         {
             id: 2,
-            icon: "",
+            icon: <FaMobileAlt size={24} />,
             title: t("about_card_responsive"),
             description: t("about_card_responsive_desc"),
         },
         {
             id: 3,
-            icon: "",
+            icon: <FaPaintBrush size={24} />,
             title: t("about_card_uiux"),
             description: t("about_card_uiux_desc"),
         },
         {
             id: 4,
-            icon: <BiSolidPencil size={24} />,
+            icon: <FaTachometerAlt size={24} />,
             title: t("about_card_performance"),
             description: t("about_card_performance_desc"),
         },
@@ -55,17 +59,33 @@ const About = () => {
 
                 <p className="font-semibold text-lg">{t("about_description")}</p>
 
+                <div className="flex items-center gap-3 mt-4">
+                    <span className="text-sm text-muted">Stack:</span>
+                    <div className="flex items-center gap-2">
+                        <FaReact className="text-cyan-400" />
+                        <BsTypescript className="text-sky-500" />
+                        <SiTailwindcss className="text-teal-400" />
+                    </div>
+                </div>
+
                 <p className="font-semibold text-md text-violet-600">
                     {t("about_question")}{" "}
                     <a href="#contact">
                         <span className="text-violet-600 hover:underline cursor-pointer">{t("about_contactMe")}</span>
                     </a>
                 </p>
+
+                <div className="mt-4 flex gap-4">
+                    <Button className="p-3 bg-violet-600 rounded-md">{t("nav_downloadCv")}</Button>
+                    <a href="#contact" className="p-3 bg-gray-800 rounded-md inline-flex items-center">
+                        Contact
+                    </a>
+                </div>
             </div>
 
             <div className="items-center grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {infocards.map((info) => (
-                    <Card infocard={info} />
+                    <Card key={info.id} infocard={info} />
                 ))}
             </div>
         </div>
