@@ -5,10 +5,10 @@ import { useLanguage } from "../context/LanguageContext";
 const Footer = () => {
     const { t } = useLanguage();
     return (
-        <footer className="bg-gray-900 flex flex-col md:flex-row items-start md:items-center justify-between px-[6vw] py-[4vw] mt-[6vw] border-t border-gray-800 gap-6">
+        <footer className="flex flex-col md:flex-row items-start md:items-center justify-between px-[6vw] py-[4vw] mt-[6vw] border-t border-gray-800 gap-6">
             <div className="flex flex-col gap-4 max-w-lg">
                 <a href="/" className="text-xl font-bold">
-                    <span className="text-violet-600 ">Dario.</span>
+                    <span className="text-violet-600">Dario.</span>
                     portfolio
                 </a>
 

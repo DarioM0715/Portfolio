@@ -35,7 +35,6 @@ const Skills = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                 <div>
-                    <h3 className="text-xl font-bold mb-4">Core</h3>
                     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                         {core.map((tech) => (
                             <li key={tech.id} className="border border-gray-600 rounded-md flex flex-col items-center justify-center gap-2 p-4 transition-transform transform hover:-translate-y-1 hover:scale-105">
@@ -47,7 +46,6 @@ const Skills = () => {
                 </div>
 
                 <div>
-                    <h3 className="text-xl font-bold mb-4">Tools & Backend</h3>
                     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                         {tools.map((tech) => (
                             <li key={tech.id} className="border border-gray-600 rounded-md flex flex-col items-center justify-center gap-2 p-4 transition-transform transform hover:-translate-y-1 hover:scale-105">

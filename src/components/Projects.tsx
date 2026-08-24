@@ -11,10 +11,10 @@ import { useLanguage } from "../context/LanguageContext";
 import portfolioPicture from "../assets/images/Captura de pantalla 2026-03-16 001904.png";
 
 const Card = ({ project }: { project: Project }) => {
-    const { id, title, description, image, altImage, urlProd, urlGithub, technologies } = project;
+    const { id, title, image, altImage, technologies } = project;
 
     return (
-        <div id={String(id)} className="bg-gray-950 rounded-lg relative h-full">
+        <div id={String(id)} className="border border-gray-700 rounded-lg relative h-full">
             <div className="overflow-hidden rounded-t-lg h-44">
                 <img
                     alt={altImage}
@@ -65,7 +65,7 @@ const Projects = () => {
     const projects: Project[] = [
         {
             id: 1,
-            title: "My portfolio",
+            title: "Dario.Portfolio",
             description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
             image: portfolioPicture,
@@ -80,12 +80,12 @@ const Projects = () => {
         },
         {
             id: 2,
-            title: "My portfolio",
+            title: "Produceos",
             description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
             image: portfolioPicture,
             altImage: "",
-            urlProd: "",
+            urlProd: "https://produceos.agrileaf.com/",
             urlGithub: "",
             technologies: [
                 { id: 1, name: "React", icon: <FaReact /> },
@@ -95,51 +95,9 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: "My portfolio",
+            title: "Sapiens",
             description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit dolore voluptatibus soluta minima placeat",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
-        {
-            id: 4,
-            title: "Another project",
-            description: "Another example project",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
-        {
-            id: 5,
-            title: "Side project",
-            description: "Side project",
-            image: portfolioPicture,
-            altImage: "",
-            urlProd: "",
-            urlGithub: "",
-            technologies: [
-                { id: 1, name: "React", icon: <FaReact /> },
-                { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-                { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-            ],
-        },
-        {
-            id: 6,
-            title: "Experimental",
-            description: "Experimental project",
             image: portfolioPicture,
             altImage: "",
             urlProd: "",
@@ -163,7 +121,7 @@ const Projects = () => {
             </div>
 
             <div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-8 h-full">
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
                     {projects.map((project) => (
                         <li key={project.id} onClick={() => handleOpen(project)} className="h-full">
                             <Card project={project} />
@@ -172,7 +130,7 @@ const Projects = () => {
                 </ul>
             </div>
 
-            <Button className="flex text-nowrap items-center gap-4 p-4 rounded-md transform transition-all duration-150  hover:translate-y-1  bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800">
+            <Button className="flex text-nowrap items-center gap-4 0 transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
                 <span>View more projects on GitHub</span>
                 <FiGithub size={24} />
             </Button>
@@ -184,13 +142,12 @@ const Projects = () => {
                     </div>
 
                     <div className="p-4 flex flex-col gap-4">
-                        <h3 className="text-2xl font-bold">{project?.title}</h3>
-                        {/* <p className="font-semibold">{description}</p> */}
+                        <p className="font-semibold">{project?.description}</p>
                         <ul className="flex flex-col sm:flex-row gap-4">
                             {project?.technologies.map((tech) => (
                                 <li className="flex items-center gap-1">
                                     {tech.icon}
-                                    {/* {tech.name} */}
+                                    {tech.name}
                                 </li>
                             ))}
                         </ul>
@@ -202,19 +159,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-{
-    /* <div className="flex items-center gap-4 absolute top-0 bottom-6 right-4">
-                    <Button icon className="border border-gray-600 p-2 rounded-full">
-                        <a href={urlGithub}>
-                            <FiGithub size={24} />
-                        </a>
-                    </Button>
-
-                    <Button icon className="border border-gray-600 p-2 rounded-full">
-                        <a href={urlProd}>
-                            <FiLinkedin size={24} />
-                        </a>
-                    </Button>
-                </div> */
-}

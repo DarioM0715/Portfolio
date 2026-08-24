@@ -77,9 +77,9 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50">
+            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-gray-800">
                 <div className="font-bold text-xl flex items-center gap-6">
-                    <a href="/" className="text-white transition-all duration-150 hover:scale-105">
+                    <a href="/" className="transition-all duration-150 hover:scale-105">
                         <span className="text-violet-600">Dario.</span>
                         portfolio
                     </a>
@@ -95,7 +95,7 @@ const Header = () => {
 
                 {isDesktop && (
                     <div className="text-lg flex items-center gap-6">
-                        <ul className="flex items-center gap-10 font-semibold text-md text-white">
+                        <ul className="flex items-center gap-10 font-semibold text-md">
                             {navs.map((nav) => (
                                 <li key={nav.id} className="transition duration-150 hover:scale-110 hover:text-violet-600 nav-item">
                                     <a href={nav.href}>{nav.name}</a>

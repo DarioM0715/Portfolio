@@ -31,9 +31,9 @@ export const Dialog = ({ title, children, open, onClose, ariaLabel = "Dialog" }:
                 aria-modal="true"
                 aria-label={ariaLabel}
                 ref={dialogRef}
-                className={`relative z-50 mx-auto w-full max-w-2xl transform overflow-hidden rounded-2xl bg-gray-800 shadow-xl transition-all duration-200 ${
+                className={`border border-gray-700 relative z-50 mx-auto w-full max-w-2xl transform overflow-hidden rounded-2xl shadow-xl transition-all duration-200 ${
                     open ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
-                } text-white`}
+                }`}
                 onMouseDown={(e) => e.stopPropagation()}
                 tabIndex={-1}
             >

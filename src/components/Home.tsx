@@ -1,10 +1,13 @@
 import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
+import { useIsDesktop } from "./useIsDestop";
 
 const Home = () => {
     const { t } = useLanguage();
+    const isDesktop = useIsDesktop(1024);
+
     return (
-        <section id="home" className="flex min-h-screen items-center border-b border-gray-700 px-[6vw]">
+        <section id="home" className="flex justify-between min-h-screen items-center border-b border-gray-700 px-[6vw]">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
@@ -21,27 +24,29 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700">
+                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
                         <a href="#projects">{t("home_viewProjects")}</a>
                     </Button>
 
-                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800">
+                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800 text-white">
                         <a href="#contact">{t("home_contact")}</a>
                     </Button>
                 </div>
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lottie-holder">
-                {/* Replace the src with any Lottie JSON URL you like from LottieFiles */}
-                <lottie-player
-                    src="https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json"
-                    background="transparent"
-                    speed="1"
-                    loop
-                    autoplay
-                    style={{ width: "420px", height: "420px" }}
-                ></lottie-player>
-            </div>
+            {/* ANIMATED ASSETS */}
+            {isDesktop && 
+                <div className="hidden lg:flex lg:flex-1 lottie-holder">
+                    {/* Replace the src with any Lottie JSON URL you like from LottieFiles */}
+                    <lottie-player
+                        src="https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style={{ width: "700px", height: "700px" }}
+                    ></lottie-player>
+                </div>}
         </section>
     );
 };

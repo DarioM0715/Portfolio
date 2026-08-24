@@ -16,7 +16,7 @@ const Contact = () => {
                     {/* Email */}
                     <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdEmail size={24} />
+                            <MdEmail size={24} className="text-white" />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -34,7 +34,7 @@ const Contact = () => {
                     {/* Phone */}
                     <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdPhone size={24} />
+                            <MdPhone size={24} className="text-white" />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -52,7 +52,7 @@ const Contact = () => {
                     {/* Location */}
                     <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
                         <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdGpsFixed size={24} />
+                            <MdGpsFixed size={24} className="text-white" />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -87,7 +87,7 @@ const Contact = () => {
                         />
                     </div>
 
-                    <Button className="transform transition-all duration-150 p-2 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700">
+                    <Button className="transform transition-all duration-150 p-2 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
                         {t("contact_sendBtn")}
                     </Button>
                 </div>
