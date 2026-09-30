@@ -46,6 +46,11 @@
     "contact_emailLabel": "Correo",
     "contact_emailPlaceholder": "Tu correo",
     "contact_messagePlaceholder": "¿Cómo puedo ayudarte?",
+    "contact_messageLabel": "Mensaje",
+    "contact_sending": "Enviando...",
+    "contact_success": "¡Mensaje enviado! Te responderé pronto.",
+    "contact_error": "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+    "contact_required": "Este campo es obligatorio.",
     "contact_sendBtn": "Enviar mensaje",
     "footer_copyright": "© 2026 Dario Martinez. Todos los derechos reservados.",
     "footer_description": "Desarrollador frontend apasionado por crear experiencias digitales excepcionales."
