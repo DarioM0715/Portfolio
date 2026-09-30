@@ -7,16 +7,16 @@ const Contact = () => {
     return (
         <div id="contact" className="flex flex-col justify-center py-32 lg:min-h-screen lg:py-0 gap-8 px-[6vw]">
             <div className="flex flex-col items-center gap-4">
-                <h2 className="text-3xl font-bold text-violet-600">{t("contact_title")}</h2>
+                <h2 className="text-3xl font-bold title-glow">{t("contact_title")}</h2>
                 <p className="text-lg font-semibold text-center">{t("contact_description")}</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <ul className="flex flex-col gap-8">
                     {/* Email */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
-                        <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdEmail size={24} className="text-white" />
+                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                        <div className="icon-pill h-10 w-10 text-violet-400">
+                            <MdEmail size={24} />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -32,9 +32,9 @@ const Contact = () => {
                     </li>
 
                     {/* Phone */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
-                        <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdPhone size={24} className="text-white" />
+                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                        <div className="icon-pill h-10 w-10 text-violet-400">
+                            <MdPhone size={24} />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -50,9 +50,9 @@ const Contact = () => {
                     </li>
 
                     {/* Location */}
-                    <li className="flex border border-gray-700 rounded-md p-4 gap-4 h-full">
-                        <div className="bg-gray-600 h-10 w-10 flex items-center justify-center rounded-md">
-                            <MdGpsFixed size={24} className="text-white" />
+                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                        <div className="icon-pill h-10 w-10 text-violet-400">
+                            <MdGpsFixed size={24} />
                         </div>
 
                         <div className="flex flex-col text-md font-semibold">
@@ -62,11 +62,11 @@ const Contact = () => {
                     </li>
                 </ul>
 
-                <div className="flex flex-col gap-8 p-4 border border-gray-700 rounded-lg">
+                <div className="flex flex-col gap-8 p-5 card-glow">
                     <div className="flex flex-col gap-1">
                         <p>{t("contact_name")}</p>
                         <input
-                            className="p-2 border border-gray-700 rounded-md"
+                            className="input-glow p-2"
                             placeholder={t("contact_namePlaceholder")}
                         />
                     </div>
@@ -74,7 +74,7 @@ const Contact = () => {
                     <div className="flex flex-col gap-1">
                         <p>{t("contact_emailLabel")}</p>
                         <input
-                            className="p-2 border border-gray-700 rounded-md"
+                            className="input-glow p-2"
                             placeholder={t("contact_emailPlaceholder")}
                         />
                     </div>
@@ -82,12 +82,12 @@ const Contact = () => {
                     <div className="flex flex-col gap-1">
                         <p>Message</p>
                         <input
-                            className="p-2 border border-gray-700 rounded-md"
+                            className="input-glow p-2"
                             placeholder={t("contact_messagePlaceholder")}
                         />
                     </div>
 
-                    <Button className="transform transition-all duration-150 p-2 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
+                    <Button className="btn-primary p-2 hover:-translate-y-1 font-semibold">
                         {t("contact_sendBtn")}
                     </Button>
                 </div>

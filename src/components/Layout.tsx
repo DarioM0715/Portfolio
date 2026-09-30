@@ -3,7 +3,7 @@ import Footer from "./Footer";
 
 const Layout = ({ children }: any) => {
     return (
-        <div style={{ color: "var(--text)", background: "var(--bg)" }}>
+        <div className="text-(--text) bg-(--bg)">
             <Header />
             <div className="flex flex-col">{children}</div>
             <Footer />

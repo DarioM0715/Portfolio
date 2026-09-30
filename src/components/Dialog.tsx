@@ -15,23 +15,15 @@ export const Dialog = ({ title, children, open, onClose, ariaLabel = "Dialog" }:
     const dialogRef = useRef<HTMLDivElement | null>(null);
 
     return createPortal(
-        <div
-            className={`fixed inset-0 z-50 flex items-center justify-center px-4 pt-6 ${open ? "" : "pointer-events-none"}`}
-        >
-            <div
-                ref={overlayRef}
-                className={`fixed inset-0 backdrop-blur-sm transition-opacity ${open ? "opacity-100" : "opacity-0"}`}
+        <div className={`text-(--text) fixed inset-0 z-50 flex items-center justify-center px-4 pt-6 ${open ? "" : "pointer-events-none"}`}>
+            <div ref={overlayRef} className={`fixed inset-0 backdrop-blur-sm transition-opacity ${open ? "opacity-100" : "opacity-0"}`}
                 onMouseDown={(e) => {
                     if (e.target === overlayRef.current) onClose();
                 }}
             />
-
             <div
-                role="dialog"
-                aria-modal="true"
-                aria-label={ariaLabel}
-                ref={dialogRef}
-                className={`border border-gray-700 relative z-50 mx-auto w-full max-w-2xl transform overflow-hidden rounded-2xl shadow-xl transition-all duration-200 ${
+                role="dialog" aria-modal="true" aria-label={ariaLabel} ref={dialogRef}
+                className={`border border-violet-500/30 bg-(--bg) relative z-50 mx-auto w-full max-w-2xl transform overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(124,58,237,0.35)] transition-all duration-200 ${
                     open ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                 }`}
                 onMouseDown={(e) => e.stopPropagation()}

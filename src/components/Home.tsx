@@ -7,7 +7,7 @@ const Home = () => {
     const isDesktop = useIsDesktop(1024);
 
     return (
-        <section id="home" className="flex justify-between min-h-screen items-center border-b border-gray-700 px-[6vw]">
+        <section id="home" className="flex justify-between min-h-screen items-center border-b border-violet-500/10 px-[6vw]">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
@@ -15,7 +15,7 @@ const Home = () => {
                         <br />
                         {t("home_subtitle1")}
                         <br />
-                        <span className="text-violet-600">{t("home_subtitle2")}</span>
+                        <span className="title-glow">{t("home_subtitle2")}</span>
                     </h1>
                 </div>
 
@@ -24,11 +24,11 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
+                    <Button className="btn-primary transform transition-all duration-150 p-4 hover:-translate-y-1">
                         <a href="#projects">{t("home_viewProjects")}</a>
                     </Button>
 
-                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800 text-white">
+                    <Button className="btn-ghost transform transition-all duration-150 p-4 hover:-translate-y-1">
                         <a href="#contact">{t("home_contact")}</a>
                     </Button>
                 </div>

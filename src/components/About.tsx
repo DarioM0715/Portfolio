@@ -1,7 +1,5 @@
 import { BiTag } from "react-icons/bi";
-import { FaMobileAlt, FaPaintBrush, FaTachometerAlt, FaReact } from "react-icons/fa";
-import { BsTypescript } from "react-icons/bs";
-import { SiTailwindcss } from "react-icons/si";
+import { FaMobileAlt, FaPaintBrush, FaTachometerAlt } from "react-icons/fa";
 import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -11,9 +9,9 @@ const Card = ({ infocard }: any) => {
     return (
         <div
             id={id}
-            className="border border-gray-700 rounded-md flex flex-col gap-4 p-4 transition-transform hover:translate-y-0.5 h-full"
+            className="card-glow flex flex-col gap-4 p-4 hover:-translate-y-1 h-full"
         >
-            <div className="bg-gray-600 text-white h-12 w-12 flex items-center justify-center rounded-md">{icon}</div>
+            <div className="icon-pill h-12 w-12 text-violet-400">{icon}</div>
             <h3 className="text-2xl font-bold">{title}</h3>
             <p className="text-lg font-semibold">{description}</p>
         </div>
@@ -52,10 +50,10 @@ const About = () => {
     return (
         <div
             id="about"
-            className="py-16 lg:min-h-screen grid grid-cols-1 gap-8 xl:grid-cols-2 items-center border-b border-gray-800 px-[6vw]"
+            className="py-16 lg:min-h-screen grid grid-cols-1 gap-8 xl:grid-cols-2 items-center border-b border-violet-500/10 px-[6vw]"
         >
             <div className="flex flex-col gap-2">
-                <h2 className="text-violet-600 font-bold text-4xl">{t("about_title")}</h2>
+                <h2 className="title-glow font-bold text-4xl">{t("about_title")}</h2>
 
                 <p className="font-semibold text-2xl">{t("about_description")}</p>
 
@@ -76,10 +74,10 @@ const About = () => {
                 </p>
 
                 <div className="mt-4 flex gap-4 text-white">
-                    <Button className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-violet-700 hover:bg-violet-600 shadow-md shadow-violet-700 text-white">
+                    <Button className="btn-primary transform transition-all duration-150 p-4 hover:-translate-y-1">
                         {t("nav_downloadCv")}
                     </Button>
-                    <a href="#contact" className="transform transition-all duration-150 p-4 hover:translate-y-1 rounded-md bg-gray-800 hover:bg-gray-700 shadow-md shadow-gray-800 text-white font-semibold">
+                    <a href="#contact" className="btn-ghost transform transition-all duration-150 p-4 hover:-translate-y-1 font-semibold">
                         Contact
                     </a>
                 </div>

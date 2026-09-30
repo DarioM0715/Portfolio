@@ -15,7 +15,7 @@ export const LanguageSwitcher = () => {
                     }`}
                 >
                     <div className="flex items-center gap-1">
-                        <span class="fi fi-us"></span>
+                        <span className="fi fi-us"></span>
                         <span>EN</span>
                     </div>
                 </Button>
@@ -29,7 +29,7 @@ export const LanguageSwitcher = () => {
                     }`}
                 >
                     <div className="flex items-center gap-1">
-                        <span class="fi fi-es"></span>
+                        <span className="fi fi-es"></span>
                         <span>ES</span>
                     </div>
                 </Button>

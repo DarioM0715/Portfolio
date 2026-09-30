@@ -77,10 +77,10 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-gray-800">
+            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-violet-500/10">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/" className="transition-all duration-150 hover:scale-105">
-                        <span className="text-violet-600">Dario.</span>
+                        <span className="title-glow">Dario.</span>
                         portfolio
                     </a>
 
@@ -112,7 +112,7 @@ const Header = () => {
 
                 {!isDesktop && (
                     <Button
-                        className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                        className="btn-ghost rounded-full p-2 transition-all duration-150 hover:scale-110"
                         onClick={openMenu}
                         aria-label="Abrir menú"
                     >
@@ -131,7 +131,7 @@ const Header = () => {
                         aria-hidden="true"
                     />
                     <div
-                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-gray-900 shadow-xl flex flex-col p-6 transition-transform duration-300 ${
+                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-(--surface) shadow-xl flex flex-col p-6 transition-transform duration-300 ${
                             isMenuOpen ? "translate-x-0" : "translate-x-100"
                         }`}
                     >
@@ -139,19 +139,19 @@ const Header = () => {
                             <Button
                                 onClick={closeMenu}
                                 aria-label="Cerrar menú"
-                                className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                                className="btn-ghost rounded-full p-2 transition-all duration-150 hover:scale-110"
                             >
                                 <BiX size={28} />
                             </Button>
                         </div>
 
-                        <ul className="flex flex-col gap-6 mt-8 font-semibold text-white text-lg">
+                        <ul className="flex flex-col gap-6 mt-8 font-semibold text-(--text) text-lg">
                             {navs.map((nav) => (
                                 <li key={nav.id}>
                                     <a
                                         href={nav.href}
                                         onClick={closeMenu}
-                                        className="block py-2 hover:text-violet-600 transition border-b border-gray-700"
+                                        className="block py-2 hover:text-violet-600 transition border-b border-violet-500/10"
                                     >
                                         {nav.name}
                                     </a>
@@ -159,7 +159,7 @@ const Header = () => {
                             ))}
                         </ul>
 
-                        <div className="mt-auto pt-6 border-t border-gray-700 flex items-center justify-between">
+                        <div className="mt-auto pt-6 border-t border-violet-500/10 flex items-center justify-between">
                             <LanguageSwitcher />
                             <DonwloadCv />
                         </div>
