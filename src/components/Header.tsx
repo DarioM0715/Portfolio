@@ -1,12 +1,32 @@
 import { useState, useEffect } from "react";
 import { LanguageSwitcher } from "../context/LanguageSwitcher";
 import { Button } from "./Button";
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiSun, FiMoon } from "react-icons/fi";
+import { useTheme } from "../context/ThemeContext";
 import { useIsDesktop } from "./useIsDestop";
 import { BiMenu, BiX } from "react-icons/bi";
 import { DonwloadCv } from "./DownloadCv";
+import { useLanguage } from "../context/LanguageContext";
+
+const ThemeToggleButton = () => {
+    const { theme, toggle } = useTheme();
+    return (
+        <button
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className={`theme-toggle ${theme === "light" ? "light" : "dark"}`}
+        >
+            <div className="track">
+                <span className={`knob`}>
+                    {theme === "dark" ? <FiMoon /> : <FiSun />}
+                </span>
+            </div>
+        </button>
+    );
+};
 
 const Header = () => {
+    const { t } = useLanguage();
     const isDesktop = useIsDesktop(1024);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
@@ -46,21 +66,21 @@ const Header = () => {
     };
 
     const navs = [
-        { id: 1, name: "Home", href: "#home" },
-        { id: 2, name: "About me", href: "#about" },
-        { id: 4, name: "Projects", href: "#projects" },
-        { id: 3, name: "Skills", href: "#skills" },
-        { id: 5, name: "Contact", href: "#contact" },
+        { id: 1, name: t("nav_home"), href: "#home" },
+        { id: 2, name: t("nav_about"), href: "#about" },
+        { id: 4, name: t("nav_projects"), href: "#projects" },
+        { id: 3, name: t("nav_skills"), href: "#skills" },
+        { id: 5, name: t("nav_contact"), href: "#contact" },
     ];
 
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
         <>
-            <header className="backdrop-blur-lg sticky top-0 left-0 right-0 flex items-center justify-between px-[4vw] py-4 z-50">
+            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-violet-500/10">
                 <div className="font-bold text-xl flex items-center gap-6">
-                    <a href="/" className="text-white transition-all duration-150 hover:scale-105">
-                        <span className="text-violet-600">Dario.</span>
+                    <a href="/" className="transition-all duration-150 hover:scale-105">
+                        <span className="title-glow">Dario.</span>
                         portfolio
                     </a>
 
@@ -74,24 +94,25 @@ const Header = () => {
                 </div>
 
                 {isDesktop && (
-                    <div className="flex items-center gap-10">
-                        <ul className="flex items-center gap-10 font-semibold text-md text-white">
+                    <div className="text-lg flex items-center gap-6">
+                        <ul className="flex items-center gap-10 font-semibold text-md">
                             {navs.map((nav) => (
-                                <li
-                                    key={nav.id}
-                                    className="transition duration-150 hover:scale-110 hover:text-violet-600"
-                                >
+                                <li key={nav.id} className="transition duration-150 hover:scale-110 hover:text-violet-600 nav-item">
                                     <a href={nav.href}>{nav.name}</a>
                                 </li>
                             ))}
                         </ul>
+
                         <LanguageSwitcher />
+
+                        {/* Theme toggle */}
+                        <ThemeToggleButton />
                     </div>
                 )}
 
                 {!isDesktop && (
                     <Button
-                        className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                        className="btn-ghost rounded-full p-2 transition-all duration-150 hover:scale-110"
                         onClick={openMenu}
                         aria-label="Abrir menú"
                     >
@@ -110,7 +131,7 @@ const Header = () => {
                         aria-hidden="true"
                     />
                     <div
-                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-gray-900 shadow-xl flex flex-col p-6 transition-transform duration-300 ${
+                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-(--surface) shadow-xl flex flex-col p-6 transition-transform duration-300 ${
                             isMenuOpen ? "translate-x-0" : "translate-x-100"
                         }`}
                     >
@@ -118,19 +139,19 @@ const Header = () => {
                             <Button
                                 onClick={closeMenu}
                                 aria-label="Cerrar menú"
-                                className="border border-gray-700 p-2 rounded-full transition-all hover:scale-110"
+                                className="btn-ghost rounded-full p-2 transition-all duration-150 hover:scale-110"
                             >
                                 <BiX size={28} />
                             </Button>
                         </div>
 
-                        <ul className="flex flex-col gap-6 mt-8 font-semibold text-white text-lg">
+                        <ul className="flex flex-col gap-6 mt-8 font-semibold text-(--text) text-lg">
                             {navs.map((nav) => (
                                 <li key={nav.id}>
                                     <a
                                         href={nav.href}
                                         onClick={closeMenu}
-                                        className="block py-2 hover:text-violet-600 transition border-b border-gray-700"
+                                        className="block py-2 hover:text-violet-600 transition border-b border-violet-500/10"
                                     >
                                         {nav.name}
                                     </a>
@@ -138,7 +159,7 @@ const Header = () => {
                             ))}
                         </ul>
 
-                        <div className="mt-auto pt-6 border-t border-gray-700 flex items-center justify-between">
+                        <div className="mt-auto pt-6 border-t border-violet-500/10 flex items-center justify-between">
                             <LanguageSwitcher />
                             <DonwloadCv />
                         </div>

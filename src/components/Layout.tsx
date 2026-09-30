@@ -3,9 +3,9 @@ import Footer from "./Footer";
 
 const Layout = ({ children }: any) => {
     return (
-        <div className="text-white bg-gray-900">
+        <div className="text-(--text) bg-(--bg)">
             <Header />
-            <div className="px-[4vw] flex flex-col">{children}</div>
+            <div className="flex flex-col">{children}</div>
             <Footer />
         </div>
     );
