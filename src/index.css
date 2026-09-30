@@ -1,6 +1,11 @@
 @import "./styles/colors.css";
 @import "tailwindcss";
 
+html,
+body {
+  overflow-x: clip;
+}
+
 @utility card-glow {
   border: 1px solid rgb(124 58 237 / 0.2);
   border-radius: 0.75rem;
