@@ -34,7 +34,7 @@ const Skills = () => {
             <div className="gap-8 w-full">
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ">
                     {skills.map((tech) => (
-                        <li key={tech.id} className="card-glow flex flex-col items-center justify-center gap-2 p-4 hover:-translate-y-1 hover:scale-105 text-(--muted) hover:text-violet-400">
+                        <li key={tech.id} className="card-glow flex flex-col items-center justify-center gap-2 p-4 transition-transform hover:-translate-y-1 hover:scale-105 text-(--muted) hover:text-violet-400">
                             {tech.icon}
                             <span className="text-lg font-semibold">{tech.name}</span>
                         </li>

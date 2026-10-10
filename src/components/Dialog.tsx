@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { createPortal } from "react-dom";
+import { useLockBodyScroll } from "./useLockBodyScroll";
 
 export type DialogProps = {
     title: string;
@@ -13,6 +14,8 @@ export const Dialog = ({ title, children, open, onClose, ariaLabel = "Dialog" }:
     const overlayRef = useRef<HTMLDivElement | null>(null);
 
     const dialogRef = useRef<HTMLDivElement | null>(null);
+
+    useLockBodyScroll(open);
 
     return createPortal(
         <div className={`text-(--text) fixed inset-0 z-50 flex items-center justify-center px-4 pt-6 ${open ? "" : "pointer-events-none"}`}>

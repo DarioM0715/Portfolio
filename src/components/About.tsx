@@ -9,7 +9,7 @@ const Card = ({ infocard }: any) => {
     return (
         <div
             id={id}
-            className="card-glow flex flex-col gap-4 p-4 hover:-translate-y-1 h-full"
+            className="card-glow flex flex-col gap-4 p-4 transition-transform hover:-translate-y-1 h-full"
         >
             <div className="icon-pill h-12 w-12 text-violet-400">{icon}</div>
             <h3 className="text-2xl font-bold">{title}</h3>
@@ -56,15 +56,6 @@ const About = () => {
                 <h2 className="title-glow font-bold text-4xl">{t("about_title")}</h2>
 
                 <p className="font-semibold text-2xl">{t("about_description")}</p>
-
-                {/* <div className="flex items-center gap-3 mt-4">
-                    <span className="text-sm text-muted">Stack:</span>
-                    <div className="flex items-center gap-2">
-                        <FaReact className="text-cyan-400" />
-                        <BsTypescript className="text-sky-500" />
-                        <SiTailwindcss className="text-teal-400" />
-                    </div>
-                </div> */}
 
                 <p className="font-semibold text-md text-violet-600 text-xl">
                     {t("about_question")}{" "}
