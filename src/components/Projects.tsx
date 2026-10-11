@@ -24,6 +24,8 @@ const Card = ({ project }: { project: Project }) => {
             <div className="relative h-44 shrink-0 overflow-hidden">
                 <img
                     alt={altImage}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 transform-gpu"
                     src={image}
                 />

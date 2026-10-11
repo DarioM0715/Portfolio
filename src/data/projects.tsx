@@ -1,20 +1,20 @@
 import type { Project } from "../types";
 
-import portfolioPicture from "../assets/images/project1_portfolio/Picture1.png";
-import produceosPicture1 from "../assets/images/project2_produceos/Picture1.png";
-import produceosPicture2 from "../assets/images/project2_produceos/Picture2.png";
-import produceosPicture3 from "../assets/images/project2_produceos/Picture3.png";
-import produceosPicture4 from "../assets/images/project2_produceos/Picture4.png";
-import produceosPicture5 from "../assets/images/project2_produceos/Picture5.png";
-import sapiensPicture from "../assets/images/project3_sapiens/Picture1.png";
-import sapiensPicture2 from "../assets/images/project3_sapiens/Picture2.png";
-import sapiensPicture3 from "../assets/images/project3_sapiens/Picture3.png";
-import myLittleHomePicture1 from "../assets/images/project4_mylittlehome/Picture1.png";
-import myLittleHomePicture2 from "../assets/images/project4_mylittlehome/Picture2.png";
-import myLittleHomePicture3 from "../assets/images/project4_mylittlehome/Picture3.png";
-import myLittleHomePicture4 from "../assets/images/project4_mylittlehome/Picture4.png";
-import myLittleHomePicture5 from "../assets/images/project4_mylittlehome/Picture5.png";
-import myLittleHomePicture6 from "../assets/images/project4_mylittlehome/Picture6.png";
+import portfolioPicture from "../assets/images/project1_portfolio/Picture1.webp";
+import produceosPicture1 from "../assets/images/project2_produceos/Picture1.webp";
+import produceosPicture2 from "../assets/images/project2_produceos/Picture2.webp";
+import produceosPicture3 from "../assets/images/project2_produceos/Picture3.webp";
+import produceosPicture4 from "../assets/images/project2_produceos/Picture4.webp";
+import produceosPicture5 from "../assets/images/project2_produceos/Picture5.webp";
+import sapiensPicture from "../assets/images/project3_sapiens/Picture1.webp";
+import sapiensPicture2 from "../assets/images/project3_sapiens/Picture2.webp";
+import sapiensPicture3 from "../assets/images/project3_sapiens/Picture3.webp";
+import myLittleHomePicture1 from "../assets/images/project4_mylittlehome/Picture1.webp";
+import myLittleHomePicture2 from "../assets/images/project4_mylittlehome/Picture2.webp";
+import myLittleHomePicture3 from "../assets/images/project4_mylittlehome/Picture3.webp";
+import myLittleHomePicture4 from "../assets/images/project4_mylittlehome/Picture4.webp";
+import myLittleHomePicture5 from "../assets/images/project4_mylittlehome/Picture5.webp";
+import myLittleHomePicture6 from "../assets/images/project4_mylittlehome/Picture6.webp";
 
 import { BsTypescript } from "react-icons/bs";
 import { FaReact } from "react-icons/fa";

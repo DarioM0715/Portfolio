@@ -35,7 +35,14 @@ export const ProjectCarousel = ({
                 }}
             >
                 {images.map((img, i) => (
-                    <img key={i} src={img} alt={alt} className="h-full w-full shrink-0 object-contain" draggable={false}
+                    <img
+                        key={i}
+                        src={img}
+                        alt={alt}
+                        loading={i === current ? "eager" : "lazy"}
+                        decoding="async"
+                        className="h-full w-full shrink-0 object-contain"
+                        draggable={false}
                     />
                 ))}
             </div>
