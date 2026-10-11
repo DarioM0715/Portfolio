@@ -59,7 +59,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <ul className="flex flex-col gap-8">
                     {/* Email */}
-                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                    <li className="flex card-glow p-4 gap-4 h-full transition-transform hover:-translate-y-1">
                         <div className="icon-pill h-10 w-10 text-violet-400">
                             <MdEmail size={24} />
                         </div>
@@ -82,7 +82,7 @@ const Contact = () => {
                     </li>
 
                     {/* Phone */}
-                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                    <li className="flex card-glow p-4 gap-4 h-full transition-transform hover:-translate-y-1">
                         <div className="icon-pill h-10 w-10 text-violet-400">
                             <MdPhone size={24} />
                         </div>
@@ -102,7 +102,7 @@ const Contact = () => {
                     </li>
 
                     {/* Location */}
-                    <li className="flex card-glow p-4 gap-4 h-full hover:-translate-y-1">
+                    <li className="flex card-glow p-4 gap-4 h-full transition-transform hover:-translate-y-1">
                         <div className="icon-pill h-10 w-10 text-violet-400">
                             <MdGpsFixed size={24} />
                         </div>
@@ -175,7 +175,7 @@ const Contact = () => {
 
                     <Button
                         type="submit"
-                        className="btn-primary p-2 hover:-translate-y-1 font-semibold disabled:opacity-50 disabled:pointer-events-none"
+                        className="btn-primary p-2 transition-transform hover:-translate-y-1 font-semibold disabled:opacity-50 disabled:pointer-events-none"
                         disabled={status === "sending"}
                     >
                         <span className="flex items-center justify-center gap-2">

@@ -8,7 +8,7 @@ const Home = () => {
 
     return (
         <section id="home" className="flex justify-between min-h-screen items-center border-b border-violet-500/10 px-[6vw]">
-            <div className="flex flex-col gap-10 min-w-0">
+            <div className="flex flex-col gap-10 min-w-0 w-full lg:max-w-2xl">
                 <div className="flex flex-col">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
                         {t("home_title")}
@@ -20,7 +20,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <p className="font-semibold text-xl lg:text-2xl">{t("home_description")}</p>
+                    <p className="font-semibold text-xl 2xl:text-2xl">{t("home_description")}</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -36,14 +36,14 @@ const Home = () => {
 
             {/* ANIMATED ASSETS */}
             {isDesktop && 
-                <div className="hidden lg:flex lg:flex-1 lottie-holder min-w-0 justify-center overflow-hidden">
+                <div className="hidden lg:flex flex-1 lg:min-w-80 min-w-0 justify-center overflow-hidden">
                     <lottie-player
                         src="/animations/hero.json"
                         background="transparent"
                         speed="1"
                         loop
                         autoplay
-                        style={{ width: "100%", height: "auto", maxWidth: "700px" }}
+                        style={{ width: "100%", height: "auto", maxWidth: "560px" }}
                     ></lottie-player>
                 </div>}
         </section>

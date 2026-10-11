@@ -19,11 +19,15 @@ const Footer = () => {
 
             <div className="flex items-center gap-4 ml-auto">
                 <Button icon className="btn-ghost rounded-full p-3 flex items-center hover:-rotate-4 hover:scale-110">
-                    <FiGithub size={24} />
+                    <a href="https://github.com/DarioM0715">
+                        <FiGithub size={24} />
+                    </a>
                 </Button>
 
                 <Button icon className="btn-ghost rounded-full p-3 flex items-center hover:-rotate-4 hover:scale-110">
-                    <FiLinkedin size={24} />
+                    <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356">
+                        <FiLinkedin size={24} />
+                    </a>
                 </Button>
             </div>
         </footer>

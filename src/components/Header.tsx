@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { FiGithub, FiLinkedin, FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
 import { useIsDesktop } from "./useIsDestop";
+import { useLockBodyScroll } from "./useLockBodyScroll";
 import { BiMenu, BiX } from "react-icons/bi";
 import { DonwloadCv } from "./DownloadCv";
 import { useLanguage } from "../context/LanguageContext";
@@ -31,31 +32,20 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
 
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
-        return () => {
-            document.body.style.overflow = "unset";
-        };
-    }, [isMenuOpen]);
+    useLockBodyScroll(isMenuOpen);
+
+    const [wasDesktop, setWasDesktop] = useState(isDesktop);
+    if (isDesktop !== wasDesktop) {
+        setWasDesktop(isDesktop);
+        if (isDesktop) setIsMenuOpen(false);
+    }
 
     useEffect(() => {
-        if (isMenuOpen) {
-            setShouldRenderMenu(true);
-        } else if (shouldRenderMenu) {
+        if (!isMenuOpen && shouldRenderMenu) {
             const timer = setTimeout(() => setShouldRenderMenu(false), 300);
             return () => clearTimeout(timer);
         }
     }, [isMenuOpen, shouldRenderMenu]);
-
-    useEffect(() => {
-        if (isDesktop) {
-            setIsMenuOpen(false);
-        }
-    }, [isDesktop]);
 
     const openMenu = () => {
         setShouldRenderMenu(true);
@@ -85,11 +75,15 @@ const Header = () => {
                     </a>
 
                     <Button icon>
-                        <FiGithub size={24} />
+                        <a href="https://github.com/DarioM0715">
+                            <FiGithub size={24} />
+                        </a>
                     </Button>
 
                     <Button icon>
-                        <FiLinkedin size={24} />
+                        <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356">
+                            <FiLinkedin size={24} />
+                        </a>
                     </Button>
                 </div>
 
