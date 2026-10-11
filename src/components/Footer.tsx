@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="flex flex-col md:flex-row items-start md:items-center justify-between px-[6vw] py-[4vw] mt-[6vw] border-t border-violet-500/10 gap-6">
             <div className="flex flex-col gap-4 max-w-lg">
-                <a href="/" className="text-xl font-bold">
+                <a href="/Portfolio/" className="text-xl font-bold">
                     <span className="title-glow">Dario.</span>
                     portfolio
                 </a>

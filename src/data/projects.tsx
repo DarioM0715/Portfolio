@@ -92,7 +92,7 @@ export const projectsData: ProjectData[] = [
         altImage: "Captura de pantalla de Dario.Portfolio",
         images: [portfolioPicture],
         urlProd: "",
-        urlGithub: "",
+        urlGithub: "https://github.com/DarioM0715/Portfolio",
         technologies: defaultTechnologies,
     },
     {
@@ -103,7 +103,7 @@ export const projectsData: ProjectData[] = [
         altImage: "Captura de pantalla de Sapiens",
         images: [sapiensPicture, sapiensPicture2, sapiensPicture3],
         urlProd: "",
-        urlGithub: "",
+        urlGithub: "https://github.com/DarioM0715/Sapiens",
         technologies: sapiensTechnologies,
     },
 ];
