@@ -69,7 +69,7 @@ const Header = () => {
         <>
             <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-violet-500/10">
                 <div className="font-bold text-xl flex items-center gap-6">
-                    <a href="/" className="transition-all duration-150 hover:scale-105">
+                    <a href="/Portfolio/" className="transition-all duration-150 hover:scale-105">
                         <span className="title-glow">Dario.</span>
                         portfolio
                     </a>

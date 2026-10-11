@@ -38,7 +38,7 @@ const Home = () => {
             {isDesktop && 
                 <div className="hidden lg:flex flex-1 lg:min-w-80 min-w-0 justify-center overflow-hidden">
                     <lottie-player
-                        src="/animations/hero.json"
+                        src={`${import.meta.env.BASE_URL}animations/hero.json`}
                         background="transparent"
                         speed="1"
                         loop
