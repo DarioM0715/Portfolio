@@ -1,36 +1,48 @@
-import { Button } from "./Button";
-import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { useLanguage } from "../context/LanguageContext";
+import { BiPhone } from "react-icons/bi";
+import { useIsDesktop } from "./useIsDestop";
 
 const Footer = () => {
-    const { t } = useLanguage();
+    const isDesktop = useIsDesktop()
+
     return (
-        <footer className="flex flex-col md:flex-row items-start md:items-center justify-between px-[6vw] py-[4vw] mt-[6vw] border-t border-violet-500/10 gap-6">
-            <div className="flex flex-col gap-4 max-w-lg">
-                <a href="/Portfolio/" className="text-xl font-bold">
-                    <span className="title-glow">Dario.</span>
-                    portfolio
-                </a>
+        (!isDesktop && 
+        <footer className="fixed bottom-2 left-0 right-0">
 
-                <p>{t("footer_description")}</p>
+            <div className="flex items-center justify-center gap-4">
 
-                <p>{t("footer_copyright")}</p>
+                <div className="bg-gray-500 rounded-xl">
+                    <div className="bg-gray-800 rounded-xl px-3">
+                        <BiPhone size={64} className=""/>
+                    </div>
+
+                    <span className="flex items-center justify-center font-bold">
+                        Call
+                    </span>
+                </div>
+
+                <div className="bg-gray-500 rounded-xl">
+                    <div className="bg-gray-800 rounded-xl px-3">
+                        <BiPhone size={64} className=""/>
+                    </div>
+
+                    <span className="flex items-center justify-center font-bold">
+                        Call
+                    </span>
+                </div>
+
+                <div className="bg-gray-500 rounded-xl">
+                    <div className="bg-gray-800 rounded-xl px-3">
+                        <BiPhone size={64} className=""/>
+                    </div>
+
+                    <span className="flex items-center justify-center font-bold">
+                        Call
+                    </span>
+                </div>
+                
             </div>
-
-            <div className="flex items-center gap-4 ml-auto">
-                <Button icon className="btn-ghost rounded-full p-3 flex items-center hover:-rotate-4 hover:scale-110">
-                    <a href="https://github.com/DarioM0715">
-                        <FiGithub size={24} />
-                    </a>
-                </Button>
-
-                <Button icon className="btn-ghost rounded-full p-3 flex items-center hover:-rotate-4 hover:scale-110">
-                    <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356">
-                        <FiLinkedin size={24} />
-                    </a>
-                </Button>
-            </div>
-        </footer>
+            
+        </footer>)
     );
 };
 

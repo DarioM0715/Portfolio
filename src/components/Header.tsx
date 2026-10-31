@@ -1,30 +1,12 @@
 import { useState, useEffect } from "react";
 import { LanguageSwitcher } from "../context/LanguageSwitcher";
 import { Button } from "./Button";
-import { FiGithub, FiLinkedin, FiSun, FiMoon } from "react-icons/fi";
-import { useTheme } from "../context/ThemeContext";
+import { FiGithub, FiLinkedin} from "react-icons/fi";
 import { useIsDesktop } from "./useIsDestop";
 import { useLockBodyScroll } from "./useLockBodyScroll";
-import { BiMenu, BiX } from "react-icons/bi";
-import { DonwloadCv } from "./DownloadCv";
+import { BiMenu } from "react-icons/bi";
 import { useLanguage } from "../context/LanguageContext";
-
-const ThemeToggleButton = () => {
-    const { theme, toggle } = useTheme();
-    return (
-        <button
-            onClick={toggle}
-            aria-label="Toggle theme"
-            className={`theme-toggle ${theme === "light" ? "light" : "dark"}`}
-        >
-            <div className="track">
-                <span className={`knob`}>
-                    {theme === "dark" ? <FiMoon /> : <FiSun />}
-                </span>
-            </div>
-        </button>
-    );
-};
+import { X } from "lucide-react";
 
 const Header = () => {
     const { t } = useLanguage();
@@ -67,11 +49,11 @@ const Header = () => {
 
     return (
         <>
-            <header className="backdrop-blur-lg fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-50 border-b border-violet-500/10">
+            <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-20 border-b border-white/10 bg-window">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/Portfolio/" className="transition-all duration-150 hover:scale-105">
-                        <span className="title-glow">Dario.</span>
-                        portfolio
+                        <span className="">Dario.</span>
+                        <span className="text-white">portfolio</span>
                     </a>
 
                     <Button icon>
@@ -91,7 +73,7 @@ const Header = () => {
                     <div className="text-lg flex items-center gap-6">
                         <ul className="flex items-center gap-10 font-semibold text-md">
                             {navs.map((nav) => (
-                                <li key={nav.id} className="transition duration-150 hover:scale-110 hover:text-violet-600 nav-item">
+                                <li key={nav.id} className="transition duration-150">
                                     <a href={nav.href}>{nav.name}</a>
                                 </li>
                             ))}
@@ -100,7 +82,7 @@ const Header = () => {
                         <LanguageSwitcher />
 
                         {/* Theme toggle */}
-                        <ThemeToggleButton />
+                        {/* <ThemeToggleButton /> */}
                     </div>
                 )}
 
@@ -125,37 +107,30 @@ const Header = () => {
                         aria-hidden="true"
                     />
                     <div
-                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-(--surface) shadow-xl flex flex-col p-6 transition-transform duration-300 ${
+                        className={`relative w-4/5 max-w-xs ml-auto h-full bg-(--surface) shadow-xl flex flex-col gap-10 p-6 transition-transform duration-300 zz-pattern ${
                             isMenuOpen ? "translate-x-0" : "translate-x-100"
                         }`}
                     >
+                        {/* CLOSE BUTTON */}
                         <div className="flex justify-end">
-                            <Button
-                                onClick={closeMenu}
-                                aria-label="Cerrar menú"
-                                className="btn-ghost rounded-full p-2 transition-all duration-150 hover:scale-110"
-                            >
-                                <BiX size={28} />
-                            </Button>
+                            <button type="button" className="decorative-close" aria-label="Cerrar portafolio" onClick={closeMenu}>
+                              <X size={30} strokeWidth={4} />
+                            </button>
                         </div>
 
-                        <ul className="flex flex-col gap-6 mt-8 font-semibold text-(--text) text-lg">
-                            {navs.map((nav) => (
-                                <li key={nav.id}>
-                                    <a
-                                        href={nav.href}
-                                        onClick={closeMenu}
-                                        className="block py-2 hover:text-violet-600 transition border-b border-violet-500/10"
-                                    >
-                                        {nav.name}
-                                    </a>
-                                </li>
-                            ))}
+                        <ul className="project-list">
+                          {navs.map((nav) => {
+                            return (
+                              <a key={nav.id} href={nav.href} onClick={closeMenu} className="project-link">
+                               {nav.name}
+                              </a>
+                            );
+                          })}
                         </ul>
 
                         <div className="mt-auto pt-6 border-t border-violet-500/10 flex items-center justify-between">
                             <LanguageSwitcher />
-                            <DonwloadCv />
+                            {/* <DonwloadCv /> */}
                         </div>
                     </div>
                 </div>

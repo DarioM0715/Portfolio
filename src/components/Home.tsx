@@ -1,51 +1,34 @@
-import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
-import { useIsDesktop } from "./useIsDestop";
 
 const Home = () => {
     const { t } = useLanguage();
-    const isDesktop = useIsDesktop(1024);
 
     return (
-        <section id="home" className="flex justify-between min-h-screen items-center border-b border-violet-500/10 px-[6vw]">
+        <section id="home" className="flex justify-between min-h-screen items-center border-b border-white/10 px-[6vw] pt-20 zz-background-pattern-animation">
             <div className="flex flex-col gap-10 min-w-0 w-full lg:max-w-2xl">
                 <div className="flex flex-col">
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
-                        {t("home_title")}
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
+                        <span className="text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                            {t("home_title")}
+                        </span>
                         <br />
-                        {t("home_subtitle1")}
+                        <span className="text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                            {t("home_subtitle1")}
+                        </span>
                         <br />
-                        <span className="title-glow">{t("home_subtitle2")}</span>
+                        <span className="">{t("home_subtitle2")}</span>
                     </h1>
                 </div>
 
                 <div>
-                    <p className="font-semibold text-xl 2xl:text-2xl">{t("home_description")}</p>
+                    <p className="font-semibold text-xl 2xl:text-2xl text-(--text-secondary) drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{t("home_description")}</p>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <Button className="btn-primary transform transition-all duration-150 p-4 hover:-translate-y-1">
-                        <a href="#projects">{t("home_viewProjects")}</a>
-                    </Button>
-
-                    <Button className="btn-ghost transform transition-all duration-150 p-4 hover:-translate-y-1">
-                        <a href="#contact">{t("home_contact")}</a>
-                    </Button>
+                <div className="flex items-center gap-4 flex-wrap">
+                    <a className="btn-ghost px-6 py-2" href="#projects">{t("home_viewProjects")}</a>
+                    <a className="btn-ghost px-6 py-2" href="#contact">{t("home_contact")}</a>
                 </div>
             </div>
-
-            {/* ANIMATED ASSETS */}
-            {isDesktop && 
-                <div className="hidden lg:flex flex-1 lg:min-w-80 min-w-0 justify-center overflow-hidden">
-                    <lottie-player
-                        src={`${import.meta.env.BASE_URL}animations/hero.json`}
-                        background="transparent"
-                        speed="1"
-                        loop
-                        autoplay
-                        style={{ width: "100%", height: "auto", maxWidth: "560px" }}
-                    ></lottie-player>
-                </div>}
         </section>
     );
 };

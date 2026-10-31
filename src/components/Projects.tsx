@@ -3,7 +3,6 @@ import { useLanguage } from "../context/LanguageContext";
 
 //COMPONENTS
 import { Button } from "./Button";
-import { CardProject } from "./CardProject";
 
 //ICONS
 import { FiExternalLink, FiGithub } from "react-icons/fi";
@@ -11,9 +10,10 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
 //DATA
 import { projectsData } from "../data/projects";
 import type { Project } from "../types";
+import { ProjectsModal } from "./Project/ProjectModal";
 
 const Card = ({ project }: { project: Project }) => {
-    const { id, title, description, image, altImage, urlProd, urlGithub, technologies } = project;
+    const { id, title, description, image, altImage, urlProd, urlGithub } = project;
     const { t } = useLanguage();
 
     return (
@@ -33,20 +33,17 @@ const Card = ({ project }: { project: Project }) => {
             </div>
 
             <div className="flex flex-1 flex-col gap-4 p-5">
-                <h3 className="text-2xl font-bold transition-colors group-hover:text-violet-400">{title}</h3>
-                <p className="text-sm font-medium text-(--muted) line-clamp-4 whitespace-pre-line">{description}</p>
+                <h3 className="text-2xl font-bold text-white">{title}</h3>
+                <p className="text-sm font-medium text-(--text-secondary) line-clamp-3 whitespace-pre-line">{description}</p>
 
-                <ul className="flex flex-wrap gap-2">
-                    {technologies.map((tech) => (
-                        <li
-                            key={tech.id}
-                            className="flex items-center gap-1.5 rounded-md border border-violet-500/20 bg-violet-500/10 px-2 py-1 text-xs font-semibold transition-colors group-hover:border-violet-500/40"
-                        >
-                            {tech.icon}
-                            {tech.name}
-                        </li>
+                <div className="project-tags">
+                    {project.technologies.map((technology) => (
+                      <span className="project-tag flex items-center gap-4" key={technology.id}>
+                        {technology.icon}
+                        {technology.name}
+                      </span>
                     ))}
-                </ul>
+                </div>
 
                 <div className="mt-auto flex items-center gap-3 pt-2">
                     {urlProd && (
@@ -56,7 +53,7 @@ const Card = ({ project }: { project: Project }) => {
                             rel="noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             aria-label={t("projects_live_label", { name: title })}
-                            className="flex items-center gap-2 rounded-md bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-violet-500 hover:shadow-[0_0_16px_rgba(124,58,237,0.7)]"
+                            className="flex items-center gap-2 btn-ghost px-6 py-2"
                         >
                             <FiExternalLink size={16} />
                             {t("projects_live")}
@@ -69,7 +66,7 @@ const Card = ({ project }: { project: Project }) => {
                             rel="noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             aria-label={t("projects_code_label", { name: title })}
-                            className="flex items-center gap-2 rounded-md border border-gray-600 px-4 py-2 text-sm font-semibold transition-all hover:border-violet-400 hover:text-violet-400"
+                            className="flex items-center gap-2 btn-ghost px-6 py-2"
                         >
                             <FiGithub size={16} />
                             {t("projects_code")}
@@ -97,12 +94,11 @@ const Projects = () => {
         description: t(p.descriptionKey),
     }));
 
-    const [projectId, setProjectId] = useState<number>(projects[1].id);
-    const project = projects.find((p) => p.id === projectId) ?? projects[0];
+    const [activeIndex, setActiveIndex] = useState(0);
 
-    const handleOpen = (id: number) => {
+    const handleOpen = (index: number) => {
+        setActiveIndex(index);
         setOpen(true);
-        setProjectId(id);
     };
 
     const handleClose = () => {
@@ -112,32 +108,29 @@ const Projects = () => {
     return (
         <div
             id="projects"
-            className="py-16 flex items-center justify-center flex-col gap-8 border-b border-violet-500/10 px-[6vw]"
+            className="py-16 flex items-center justify-center flex-col gap-8 border-b border-white/10 px-[6vw] bg-window"
         >
             <div className="flex items-center flex-col gap-2 ">
-                <h2 className="text-4xl title-glow font-bold">{t("projects_title")}</h2>
-                <p className="text-lg font-semibold">{t("projects_description")}</p>
+                <h2 className="text-4xl font-black tracking-tight">{t("projects_title")}</h2>
+                <p className="text-lg font-semibold text-(--text-secondary)">{t("projects_description")}</p>
             </div>
 
             <div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
-                    {projects.map((project) => (
-                        <li key={project.id} onClick={() => handleOpen(project.id)} className="h-full">
+                    {projects.map((project, index) => (
+                        <li key={project.id} onClick={() => handleOpen(index)} className="h-full">
                             <Card project={project} />
                         </li>
                     ))}
                 </ul>
             </div>
 
-            <Button className="btn-ghost  items-center transition-transform p-4 hover:-translate-y-1 font-semibold">
-                <a className="flex text-nowrap gap-4" href="https://github.com/DarioM0715">
-                    <span>View more projects on GitHub</span>
-                    <FiGithub size={24} />
-                </a>
-                
-            </Button>
+            <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2" href="https://github.com/DarioM0715">
+                <span>View more projects on GitHub</span>
+                <FiGithub size={24} />
+            </a>
 
-            <CardProject key={project.id} project={project} open={open} onClose={handleClose} />
+            <ProjectsModal projects={projects} isOpen={open} onClose={handleClose} index={activeIndex} />
         </div>
     );
 };

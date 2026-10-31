@@ -14,7 +14,7 @@ export const Button = ({ className, onClick, children, icon, type = "button", di
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`cursor-pointer text-lg font-semibold ${className}  ${icon && "transition duration-150 transform hover:scale-110 hover:text-violet-600"}`}
+            className={`cursor-pointer text-lg font-semibold ${className}  ${icon && "transition duration-150 transform hover:scale-110"}`}
         >
             {children}
         </button>
