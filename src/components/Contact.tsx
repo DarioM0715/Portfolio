@@ -54,15 +54,15 @@ const Contact = () => {
 
     return (
         <div id="contact" className="relative flex flex-col items-center justify-center lg:min-h-screen gap-12 px-[6vw] py-16">
-            <div className="absolute inset-0 bg-(--bg)" />
+            <div className="contact-section-backdrop absolute inset-0" />
             
-            <div className="relative mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-xl z-10 border border-white/20 bg-[#111111]">
+            <div className="contact-card relative mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-xl z-10 border border-white/20 bg-[#111111]">
 
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 border-b border-white/10">
-                    <div className="flex items-center gap-3 rounded-lg bg-black py-2 px-4 border border-white/20">
+                <div className="contact-card-header flex flex-col sm:flex-row items-center justify-between gap-4 p-6 border-b border-white/10">
+                    <div className="contact-email flex items-center gap-3 rounded-lg bg-black py-2 px-4 border border-white/20">
                         <span className="text-sm font-medium text-white">dariomartinezotano@gmail.com</span>
                         <button 
-                            className="cursor-pointer hover:opacity-70 transition-opacity" 
+                            className="btn-ghost contact-copy-button cursor-pointer"
                             onClick={() => handleCopy("dariomartinezotano@gmail.com")}
                             title={copied ? t("contact_copied") : t("contact_copy")}
                         >
@@ -71,20 +71,20 @@ const Contact = () => {
                         {copied && <span className="text-xs text-white/70">{t("contact_copied")}</span>}
                     </div>
 
-                    <a 
+                    <a
                         href="/Dario_Martinez_Otano_CV.pdf" 
                         download 
-                        className="cursor-pointer font-semibold rounded-lg bg-black py-2 px-6 border border-white/20 hover:bg-white/5 transition-all"
+                        className="btn-primary cursor-pointer rounded-lg py-2 px-6"
                     >
                         {t("nav_downloadCv")}
                     </a>
                 </div>
                 
-                <div className="flex flex-col p-6 sm:p-8 gap-6">
+                <div className="contact-card-body flex flex-col p-6 sm:p-8 gap-6">
 
                     <div className="flex flex-col gap-6">
                         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                            <div className="relative font-black flex h-24 w-24 items-center justify-center rounded-full text-2xl bg-black border border-white/30">
+                            <div className="contact-avatar relative font-black flex h-24 w-24 items-center justify-center rounded-full text-2xl bg-black border border-white/30">
                                 DM
                             </div>
 
@@ -92,7 +92,7 @@ const Contact = () => {
                                 <p className="text-2xl font-bold text-white">Dario Martinez Otano</p>
                                 <p className="text-base font-medium text-white/80">{t("contact_role")}</p>
                                 
-                                <div className="mt-2 flex gap-3">
+                                <div className="contact-social-links mt-2 flex gap-3">
                                     {socials.map((social) => (
                                         <a
                                             key={social.id}
@@ -100,7 +100,7 @@ const Contact = () => {
                                             target="_blank"
                                             rel="noreferrer"
                                             aria-label={social.name}
-                                            className="flex items-center justify-center p-2.5 rounded-lg border border-white/20 bg-black hover:bg-white/5 transition-all"
+                                            className="btn-ghost contact-social-link flex items-center justify-center p-2.5"
                                         >
                                             {social.icon}
                                         </a>
@@ -109,7 +109,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="p-4 rounded-lg border border-white/10 flex flex-col gap-2">
+                        <div className="contact-description p-4 rounded-lg border border-white/10 flex flex-col gap-2">
                             <p className="text-base font-medium text-white/90 leading-relaxed">{t("contact_description")}</p>
                         </div>
                     </div>
@@ -122,9 +122,9 @@ const Contact = () => {
                                     href={item.href}
                                     target={item.action === "link" ? "_blank" : undefined}
                                     rel={item.action === "link" ? "noreferrer" : undefined}
-                                    className="flex items-center gap-4 p-4 rounded-lg border border-white/20 bg-black hover:bg-white/5 transition-all"
+                                    className="contact-detail-card flex items-center gap-4 p-4 rounded-lg border border-white/20 bg-black"
                                 >
-                                    <div className="p-2 rounded-lg border border-white/20">
+                                    <div className="contact-detail-icon p-2 rounded-lg border border-white/20">
                                         {item.icon}
                                     </div>
 

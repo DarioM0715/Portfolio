@@ -40,17 +40,17 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
 
   return (
     <>
-      <section className="flex h-full flex-col gap-4 min-h-0" aria-live="polite">
-        <div className="relative flex-1 min-h-0">
-          <div className="relative h-full w-full overflow-hidden border border-white/10 bg-black">
+      <section className="project-detail-view flex h-full flex-col gap-4 min-h-0" aria-live="polite">
+        <div className="project-detail-stage relative flex-1 min-h-0">
+          <div className="project-detail-image-frame relative h-full w-full overflow-hidden border border-white/10 bg-black">
             <button
               type="button"
-              className="relative h-full w-full"
+              className="project-detail-image-trigger relative h-full w-full"
               key={`${project.id}-${imageIndex}`}
               onClick={() => setIsLightboxOpen(true)}
               aria-label="Ver imagen a pantalla completa"
             >
-              <img src={currentImage} alt={altImage ?? title} className="h-full w-full object-contain" />
+              <img src={currentImage} alt={altImage ?? title} className="project-detail-image h-full w-full object-contain" />
 
               <div className="image-placeholder">
                 <span className="placeholder-eyebrow">Vista previa del proyecto</span>
@@ -75,14 +75,14 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="project-detail-info flex flex-col gap-4">
           <div className="project-kicker">
             {technologies.map((tech) => tech.name).join(", ")}
           </div>
 
-          <h2 className="text-2xl font-bold text-white">{title}</h2>
+          <h2 className="project-detail-title text-2xl font-bold text-white">{title}</h2>
 
-          <p className="text-sm text-white/80 line-clamp-2">{project.description}</p>
+          <p className="project-detail-description text-sm text-white/80">{project.description}</p>
 
           <div className="project-tags flex flex-wrap gap-2">
             {project.technologies.map((technology) => (
@@ -100,7 +100,7 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
                   href={project.urlGithub}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 border border-white/20 hover:bg-white/5 transition-all"
+                  className="btn-ghost flex items-center gap-2 px-4 py-2 text-sm"
                 >
                   <FiGithub />
                   Código fuente
@@ -112,7 +112,7 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
                   href={project.urlProd}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 border border-white/20 hover:bg-white/5 transition-all"
+                  className="btn-primary flex items-center gap-2 px-4 py-2 text-sm"
                 >
                   <FiExternalLink />
                   Ver proyecto

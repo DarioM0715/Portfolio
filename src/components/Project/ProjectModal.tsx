@@ -61,30 +61,30 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/98 px-4 sm:px-6 lg:px-10"
+      className="projects-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/98 px-4 sm:px-6 lg:px-10"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="relative flex h-[95vh] w-full max-w-7xl flex-col overflow-hidden" role="dialog" aria-modal="true" aria-label={title}>
-        <header className="flex items-center justify-between gap-4 border-b border-white/10 px-2 pb-4">
+      <div className="projects-modal modal-animation relative flex h-[95vh] w-full max-w-7xl flex-col overflow-hidden" role="dialog" aria-modal="true" aria-label={title}>
+        <header className="projects-modal-header flex items-center justify-between gap-4 border-b border-white/10 px-2 pb-4">
           <div className="flex flex-col">
             <span className="text-xs uppercase tracking-[0.4em] text-white/40">{title}</span>
             <h1 className="text-lg sm:text-xl font-semibold text-white">{activeProject.title}</h1>
           </div>
 
-          <button type="button" className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-white/40 hover:text-white" aria-label="Cerrar modal" onClick={onClose}>
+          <button type="button" className="flex h-10 w-10 items-center justify-center cursor-pointer bg-black" aria-label="Cerrar modal" onClick={onClose}>
             <X size={20} />
           </button>
         </header>
 
-        <div className="mt-4 grid flex-1 min-h-0 grid-cols-1 gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)]">
-          <div className="min-h-0">
+        <div className="projects-modal-content mt-4 grid flex-1 min-h-0 grid-cols-1 gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)]">
+          <div className="projects-modal-main min-h-0">
             <ProjectViewer project={activeProject} />
           </div>
-          <div className="hidden min-h-0 lg:flex">
+          <div className="projects-modal-sidebar hidden min-h-0 lg:flex">
             <ProjectSidebar projects={projects} activeIndex={activeIndex} onSelect={setActiveIndex} />
           </div>
         </div>

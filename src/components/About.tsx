@@ -8,7 +8,7 @@ const Card = ({ infocard }: any) => {
 
     return (
         <div className="relative overflow-hidden flex flex-col gap-3 p-6 transition-all duration-300 hover:-translate-y-1 group border border-white/10 rounded-lg bg-linear-to-br from-[#2a2a2a] to-[#151515] backdrop-blur-sm">
-            <div className="absolute inset-0 bg-linear-to-r from-[#ff5b22]/0 via-[#ff5b22]/5 to-[#ff5b22]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-linear-to-r from-[#a855f7]/0 via-[#a855f7]/5 to-[#a855f7]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             <div className="relative icon-pill h-12 w-12">{icon}</div>
             <h3 className="relative text-xl font-bold text-white">{title}</h3>
             <p className="relative text-sm font-medium text-(--text-secondary) leading-relaxed">{description}</p>
@@ -54,10 +54,10 @@ const About = () => {
                     <p className="font-semibold text-xl text-white leading-relaxed">{t("about_description")}</p>
 
                     <div className="mt-4 flex flex-wrap gap-4 text-white">
-                        <Button className="btn-ghost px-6 py-2 duration-150 hover:scale-110">
+                        <Button className="btn-primary px-6 py-2 transition duration-300 hover:scale-110">
                             {t("nav_downloadCv")}
                         </Button>
-                        <a href="#contact" className="btn-ghost px-6 py-2 duration-150 hover:scale-110">
+                        <a href="#contact" className="btn-ghost px-6 py-2 transition duration-300 hover:scale-110">
                             {t("nav_contact")}
                         </a>
                     </div>

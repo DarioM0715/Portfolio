@@ -10,7 +10,7 @@ export const LanguageSwitcher = () => {
             {language === "en" && (
                 <Button
                     onClick={() => setLanguage("es")}
-                    className={`transition-transform hover:scale-110 ${
+                    className={`btn-ghost px-3 py-1 text-sm transition-transform hover:scale-105 ${
                         language === "en" ? "opacity-100" : "opacity-60 hover:opacity-100"
                     }`}
                 >
@@ -24,7 +24,7 @@ export const LanguageSwitcher = () => {
             {language === "es" && (
                 <Button
                     onClick={() => setLanguage("en")}
-                    className={`transition-transform hover:scale-110 ${
+                    className={`btn-ghost px-3 py-1 text-sm transition-transform hover:scale-105 ${
                         language === "es" ? "opacity-100" : "opacity-60 hover:opacity-100"
                     }`}
                 >

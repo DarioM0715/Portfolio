@@ -62,7 +62,7 @@ export const projectsData: ProjectData[] = [
         image: produceosPicture1,
         altImage: "Captura de pantalla de Reserva Produce OS",
         images: [produceosPicture1, produceosPicture2, produceosPicture3, produceosPicture4, produceosPicture5],
-        urlProd: "https://produceos.agrileaf.com/",
+        urlProd: "https://app.produceos.com/",
         urlGithub: "",
         technologies: produceosTechnologies,
     },

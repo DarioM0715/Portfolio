@@ -1,0 +1,71 @@
+.portfolio-sections-background {
+  background-color: #0a0a0a;
+  background:
+    radial-gradient(ellipse 75% 18% at 90% 70%, rgba(126, 34, 206, 0.12), transparent 100%),
+    radial-gradient(ellipse 70% 16% at 8% 88%, rgba(168, 85, 247, 0.08), transparent 100%),
+    linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 42%, #0c0a0f 65%, #080808 100%);
+}
+
+.portfolio-after-about {
+  background: transparent;
+}
+
+.contact-section-backdrop {
+  background: transparent;
+}
+
+.portfolio-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-footer-brand {
+  color: #fff;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.portfolio-footer-brand span {
+  color: #c084fc;
+}
+
+.portfolio-footer-brand:hover {
+  color: #d8b4fe;
+}
+
+.portfolio-footer-link {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(192, 132, 252, 0.24);
+  border-radius: 0.65rem;
+  background: rgba(15, 12, 19, 0.72);
+  color: rgba(255, 255, 255, 0.72);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.portfolio-footer-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 132, 252, 0.65);
+  background: rgba(168, 85, 247, 0.14);
+  color: #fff;
+}
+
+.portfolio-footer-link:focus-visible,
+.portfolio-footer-brand:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-footer-link,
+  .portfolio-footer-brand {
+    transition: none;
+  }
+}

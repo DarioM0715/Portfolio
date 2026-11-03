@@ -37,7 +37,7 @@ const Card = ({ project }: { project: Project }) => {
                                 rel="noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 aria-label={t("projects_code_label", { name: title })}
-                                className="flex items-center gap-2 px-3 py-1.5 text-xs border border-white/40 text-white hover:border-white hover:bg-white/10 transition-all"
+                                className="btn-ghost flex items-center gap-2 px-3 py-1.5 text-xs"
                             >
                                 <FiGithub size={14} />
                                 {t("projects_code")}
@@ -50,7 +50,7 @@ const Card = ({ project }: { project: Project }) => {
                                 rel="noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 aria-label={t("projects_live_label", { name: title })}
-                                className="flex items-center gap-2 px-3 py-1.5 text-xs border border-white/40 text-white hover:border-white hover:bg-white/10 transition-all"
+                                className="btn-ghost flex items-center gap-2 px-3 py-1.5 text-xs"
                             >
                                 <FiExternalLink size={14} />
                                 {t("projects_live")}
@@ -100,7 +100,7 @@ const Projects = () => {
     };
 
     return (
-        <div  id="projects" className="py-16 flex items-center justify-center flex-col gap-8 px-[6vw] bg-(--bg)">
+        <div  id="projects" className="py-16 flex items-center justify-center flex-col gap-8 px-[6vw]">
             <div className="flex items-center flex-col gap-2 ">
                 <h2 className="text-4xl font-black tracking-tight">{t("projects_title")}</h2>
                 <p className="text-lg font-semibold text-(--text-secondary)">{t("projects_description")}</p>
@@ -116,7 +116,7 @@ const Projects = () => {
                 </ul>
             </div>
 
-            <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2 duration-150 hover:scale-105" href="https://github.com/DarioM0715">
+            <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2 transition duration-300 hover:scale-105" href="https://github.com/DarioM0715">
                 <span>View more projects on GitHub</span>
                 <FiGithub size={24} />
             </a>

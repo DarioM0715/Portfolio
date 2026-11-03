@@ -51,21 +51,28 @@ const Header = () => {
             <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-[6vw] py-6 z-20 border-b border-white/10 bg-default">
                 <div className="font-bold text-xl flex items-center gap-6">
                     <a href="/Portfolio/" className="transition-all duration-150 hover:scale-105">
-                        <span className="">Dario.</span>
+                        <span className="title-glow">Dario.</span>
                         <span className="text-white">portfolio</span>
                     </a>
 
-                    <Button icon>
-                        <a href="https://github.com/DarioM0715" target="_blank">
-                            <FiGithub size={24} />
-                        </a>
-                    </Button>
+                    {isDesktop && 
+                    <>
+                        <Button icon className="">
+                            <a href="https://github.com/DarioM0715" target="_blank">
+                                <FiGithub size={24} />
+                            </a>
+                        </Button>
 
-                    <Button icon>
-                        <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank">
-                            <FiLinkedin size={24} />
-                        </a>
-                    </Button>
+                        <Button icon className="">
+                            <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank">
+                                <FiLinkedin size={24} />
+                            </a>
+                        </Button>
+
+                      
+                    </>
+                    }
+                    
                 </div>
 
                 {isDesktop && (
@@ -129,7 +136,21 @@ const Header = () => {
 
                         <div className="mt-auto pt-6 border-t border-violet-500/10 flex items-center justify-between">
                             <LanguageSwitcher />
-                            {/* <DonwloadCv /> */}
+
+                            <div className="flex items-center gap-4">
+                                <Button icon className="btn-ghost rounded-full p-2">
+                                    <a href="https://github.com/DarioM0715" target="_blank">
+                                        <FiGithub size={24} />
+                                    </a>
+                                </Button>
+
+                                <Button icon className="btn-ghost rounded-full p-2">
+                                    <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank">
+                                        <FiLinkedin size={24} />
+                                    </a>
+                                </Button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

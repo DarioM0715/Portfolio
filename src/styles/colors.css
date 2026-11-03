@@ -3,9 +3,9 @@
   --surface: #151515;
   --surface-2: #1a1a1a;
   --muted: #b0b0b0;
-  --accent: #ff5b22;
-  --accent-600: #ed2600;
-  --accent-glow: rgba(255, 91, 34, 0.6);
+  --accent: #a855f7;
+  --accent-600: #7e22ce;
+  --accent-glow: rgba(168, 85, 247, 0.55);
   --text: #ffffff;
   --text-secondary: #d4d4d4;
 }
@@ -15,9 +15,9 @@
   --surface: #151515;
   --surface-2: #1a1a1a;
   --muted: #b0b0b0;
-  --accent: #ff5b22;
-  --accent-600: #ed2600;
-  --accent-glow: rgba(255, 91, 34, 0.6);
+  --accent: #a855f7;
+  --accent-600: #7e22ce;
+  --accent-glow: rgba(168, 85, 247, 0.55);
   --text: #ffffff;
   --text-secondary: #d4d4d4;
 }
@@ -27,16 +27,15 @@
   --surface: #151515;
   --surface-2: #1a1a1a;
   --muted: #b0b0b0;
-  --accent: #ff5b22;
-  --accent-600: #ed2600;
-  --accent-glow: rgba(255, 91, 34, 0.6);
+  --accent: #a855f7;
+  --accent-600: #7e22ce;
+  --accent-glow: rgba(168, 85, 247, 0.55);
   --text: #ffffff;
   --text-secondary: #d4d4d4;
 }
 
 :root {
   background: #111;
-  --accent: #f0df00;
 }
 
 .bg-default {
