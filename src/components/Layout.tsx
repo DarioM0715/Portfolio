@@ -1,4 +1,3 @@
-// import Footer from "./Footer";
 import Header from "./Header";
 
 const Layout = ({ children }: any) => {
@@ -6,7 +5,6 @@ const Layout = ({ children }: any) => {
         <div className="text-(--text) relative min-h-screen">
             <Header />
             <div className="flex flex-col">{children}</div>
-            {/* <Footer/> */}
         </div>
     );
 };

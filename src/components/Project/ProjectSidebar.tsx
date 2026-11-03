@@ -8,8 +8,8 @@ interface ProjectSidebarProps {
 
 export function ProjectSidebar({ projects, activeIndex, onSelect}: ProjectSidebarProps) {
   return (
-    <aside className="project-sidebar">
-      <nav className="project-list" aria-label="Listado de proyectos">
+    <aside className="relative flex flex-col min-h-0">
+      <nav className="flex flex-col gap-1 overflow-y-auto pb-3" aria-label="Listado de proyectos">
         {projects.map((project, index) => {
           const isActive = index === activeIndex;
 

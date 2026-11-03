@@ -4,7 +4,7 @@ const Home = () => {
     const { t } = useLanguage();
 
     return (
-        <section id="home" className="flex justify-between min-h-screen items-center border-b border-white/10 px-[6vw] pt-20 zz-background-pattern-animation">
+        <section id="home" className="flex justify-between min-h-screen items-center px-[6vw] pt-20 zz-background-pattern-animation">
             <div className="flex flex-col gap-10 min-w-0 w-full lg:max-w-2xl">
                 <div className="flex flex-col">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
@@ -25,8 +25,8 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center gap-4 flex-wrap">
-                    <a className="btn-ghost px-6 py-2" href="#projects">{t("home_viewProjects")}</a>
-                    <a className="btn-ghost px-6 py-2" href="#contact">{t("home_contact")}</a>
+                    <a className="btn-ghost px-6 py-2 duration-150 hover:scale-105" href="#projects">{t("home_viewProjects")}</a>
+                    <a className="btn-ghost px-6 py-2 duration-150 hover:scale-105" href="#contact">{t("home_contact")}</a>
                 </div>
             </div>
         </section>

@@ -13,7 +13,7 @@ export function ProjectNavigation({ activeIndex, total, onPrevious, onNext }: Pr
   return (
     <div className="project-pager bg-[#363636] rounded-4xl" aria-label="Navegación de imágenes">
       <button type="button" className="pager-button" aria-label="Imagen anterior" disabled={activeIndex === 0} onClick={onPrevious}>
-        <ChevronLeft size={32} strokeWidth={4} />
+        <ChevronLeft size={24} strokeWidth={4} />
       </button>
 
       <span className="project-counter" aria-live="polite">
@@ -23,7 +23,7 @@ export function ProjectNavigation({ activeIndex, total, onPrevious, onNext }: Pr
       </span>
 
       <button type="button" className="pager-button" aria-label="Imagen siguiente" disabled={activeIndex === total - 1} onClick={onNext}>
-        <ChevronRight size={32} strokeWidth={4} />
+        <ChevronRight size={24} strokeWidth={4} />
       </button>
     </div>
   );

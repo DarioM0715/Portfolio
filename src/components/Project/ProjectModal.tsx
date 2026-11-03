@@ -19,7 +19,7 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
   const total = projects.length;
   const activeProject = projects[activeIndex];
 
-  useLockBodyScroll(isOpen)
+  useLockBodyScroll(isOpen);
 
   useEffect(() => {
     if (isOpen) {
@@ -60,29 +60,35 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
   if (!isOpen) return null;
 
   return (
-    <div className="portfolio-overlay"
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/98 px-4 sm:px-6 lg:px-10"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
       }}
     >
-      <section className="portfolio-window zz-modal-animation" role="dialog" aria-modal="true" aria-label={title}>
-        <header className="portfolio-topbar">
-          <h1>{title}</h1>
+      <div className="relative flex h-[95vh] w-full max-w-7xl flex-col overflow-hidden" role="dialog" aria-modal="true" aria-label={title}>
+        <header className="flex items-center justify-between gap-4 border-b border-white/10 px-2 pb-4">
+          <div className="flex flex-col">
+            <span className="text-xs uppercase tracking-[0.4em] text-white/40">{title}</span>
+            <h1 className="text-lg sm:text-xl font-semibold text-white">{activeProject.title}</h1>
+          </div>
 
-          <button type="button" className="decorative-close" aria-label="Cerrar portafolio" onClick={onClose}>
-            <X size={30} strokeWidth={4} />
+          <button type="button" className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-white/40 hover:text-white" aria-label="Cerrar modal" onClick={onClose}>
+            <X size={20} />
           </button>
         </header>
 
-        
-        <div className="portfolio-content">
-          <ProjectSidebar projects={projects} activeIndex={activeIndex} onSelect={setActiveIndex} />
-
-          <ProjectViewer project={activeProject} />
+        <div className="mt-4 grid flex-1 min-h-0 grid-cols-1 gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)]">
+          <div className="min-h-0">
+            <ProjectViewer project={activeProject} />
+          </div>
+          <div className="hidden min-h-0 lg:flex">
+            <ProjectSidebar projects={projects} activeIndex={activeIndex} onSelect={setActiveIndex} />
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
