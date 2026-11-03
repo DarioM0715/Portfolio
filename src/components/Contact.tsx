@@ -40,36 +40,36 @@ const dataItems = [
 
 const Contact = () => {
     const { t } = useLanguage();
-    const [copied, setCopied] = useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     const handleCopy = async (value: string) => {
         try {
             await navigator.clipboard.writeText(value);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 1800);
         } catch {
 
         }
     };
 
     return (
-        <div id="contact" className="relative flex flex-col items-center justify-center lg:min-h-screen gap-12 px-[6vw] py-16">
-            <div className="contact-section-backdrop absolute inset-0" />
-            
-            <div className="contact-card relative mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-xl z-10 border border-white/20 bg-[#111111]">
+        <>
+            <div id="contact" className="relative flex flex-col items-center justify-center lg:min-h-screen gap-12 px-[6vw] py-16">
+                <div className="contact-section-backdrop absolute inset-0" />
+                
+                <div className="contact-card relative mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-xl z-10 border border-white/20 bg-[#111111]">
 
-                <div className="contact-card-header flex flex-col sm:flex-row items-center justify-between gap-4 p-6 border-b border-white/10">
-                    <div className="contact-email flex items-center gap-3 rounded-lg bg-black py-2 px-4 border border-white/20">
-                        <span className="text-sm font-medium text-white">dariomartinezotano@gmail.com</span>
-                        <button 
-                            className="btn-ghost contact-copy-button cursor-pointer"
-                            onClick={() => handleCopy("dariomartinezotano@gmail.com")}
-                            title={copied ? t("contact_copied") : t("contact_copy")}
-                        >
-                            <MdContentCopy size={18}/>
-                        </button>
-                        {copied && <span className="text-xs text-white/70">{t("contact_copied")}</span>}
-                    </div>
+                    <div className="contact-card-header flex flex-col sm:flex-row items-center justify-between gap-4 p-6 border-b border-white/10">
+                        <div className="contact-email flex items-center gap-3 rounded-lg bg-black py-2 px-4 border border-white/20">
+                            <span className="text-sm font-medium text-white">dariomartinezotano@gmail.com</span>
+                            <button 
+                                className="btn-ghost contact-copy-button cursor-pointer"
+                                onClick={() => handleCopy("dariomartinezotano@gmail.com")}
+                                title={t("contact_copy")}
+                            >
+                                <MdContentCopy size={18}/>
+                            </button>
+                        </div>
 
                     <a
                         href="/Dario_Martinez_Otano_CV.pdf" 
@@ -144,6 +144,17 @@ const Contact = () => {
 
             </div>
         </div>
+
+        <div
+            className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] pointer-events-none transition-all duration-500 ${
+                showToast ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+        >
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/30 bg-black/90 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
+                <span className="text-sm font-medium text-white">{t("contact_copied")}</span>
+            </div>
+        </div>
+        </>
     );
 };
 

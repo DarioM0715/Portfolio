@@ -14,22 +14,21 @@ const Card = ({ project }: { project: Project }) => {
     const { t } = useLanguage();
 
     return (
-        <div className="group relative aspect-16/10 overflow-hidden rounded-md border border-white/10 cursor-pointer">
+        <div className="group relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
             <img
                 alt={altImage}
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src={image}
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex justify-between p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-4 md:p-5">
+                <h3 className="text-base md:text-lg font-semibold text-white mb-3 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                    {title}
+                </h3>
 
-                <div className="flex flex-col justify-end w-full">
-                    <h3 className="text-base md:text-lg font-semibold text-white mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        {title}
-                    </h3>
-
-                    <div className="flex flex-wrap justify-between items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                <div className="flex flex-wrap items-center justify-between gap-3 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                    <div className="flex flex-wrap items-center gap-2">
                         {urlGithub && (
                             <a
                                 href={urlGithub}
@@ -37,7 +36,7 @@ const Card = ({ project }: { project: Project }) => {
                                 rel="noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 aria-label={t("projects_code_label", { name: title })}
-                                className="btn-ghost flex items-center gap-2 px-3 py-1.5 text-xs"
+                                className="flex items-center gap-2 px-3 py-1.5 text-xs border border-white/40 text-white transition-all duration-200 hover:border-white hover:bg-white/10"
                             >
                                 <FiGithub size={14} />
                                 {t("projects_code")}
@@ -50,22 +49,21 @@ const Card = ({ project }: { project: Project }) => {
                                 rel="noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 aria-label={t("projects_live_label", { name: title })}
-                                className="btn-ghost flex items-center gap-2 px-3 py-1.5 text-xs"
+                                className="flex items-center gap-2 px-3 py-1.5 text-xs border border-white/40 text-white transition-all duration-200 hover:border-white hover:bg-white/10"
                             >
                                 <FiExternalLink size={14} />
                                 {t("projects_live")}
                             </a>
                         )}
-
-                        <div className="flex gap-3 justify-end">
-                            {technologies.map((technology) => (
-                              <span key={technology.id}>
-                                {technology.icon}
-                              </span>
-                            ))}
-                        </div>
                     </div>
 
+                    <div className="flex items-center gap-2">
+                        {technologies.map((technology) => (
+                            <span key={technology.id} className="text-white/80">
+                                {technology.icon}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

@@ -787,10 +787,6 @@
   color: #fff;
 }
 
-.projects-modal .project-link.active::before {
-  color: #ff9a76;
-}
-
 .project-detail-view {
   gap: 12px;
 }
@@ -865,7 +861,7 @@
 }
 
 .projects-modal .project-detail-description {
-  max-width: 72ch;
+  width: 100%;
   margin: 0;
   padding-right: 4px;
   color: rgba(255, 255, 255, 0.7);
@@ -892,10 +888,6 @@
   color: rgba(255, 255, 255, 0.77);
   font-size: 0.7rem;
   font-weight: 600;
-}
-
-.projects-modal .project-tag svg {
-  color: #ff7a4d;
 }
 
 .projects-modal .project-links {
@@ -1002,9 +994,8 @@
 
   .projects-modal {
     width: 100%;
-    height: 100dvh;
     max-height: 100dvh;
-    border-radius: 0;
+    border-radius: 24px;
   }
 
   .projects-modal-header {

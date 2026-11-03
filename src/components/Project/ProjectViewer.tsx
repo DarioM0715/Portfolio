@@ -52,14 +52,6 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
             >
               <img src={currentImage} alt={altImage ?? title} className="project-detail-image h-full w-full object-contain" />
 
-              <div className="image-placeholder">
-                <span className="placeholder-eyebrow">Vista previa del proyecto</span>
-                <strong>{title}</strong>
-                <span>
-                  Añade la captura en{" "}
-                  <code>public{currentImage}</code>
-                </span>
-              </div>
             </button>
 
             {imageCount > 1 && (
@@ -75,25 +67,25 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
           </div>
         </div>
 
-        <div className="project-detail-info flex flex-col gap-4">
-          <div className="project-kicker">
-            {technologies.map((tech) => tech.name).join(", ")}
+        <div className="project-detail-info flex flex-col justify-between gap-4">
+
+          <div className="flex flex-col gap-1">
+            <h2 className="project-detail-title text-2xl font-bold text-white">{title}</h2>
+            <p className="project-detail-description text-sm text-white/80">{project.description}</p>
           </div>
+        
 
-          <h2 className="project-detail-title text-2xl font-bold text-white">{title}</h2>
-
-          <p className="project-detail-description text-sm text-white/80">{project.description}</p>
-
-          <div className="project-tags flex flex-wrap gap-2">
-            {project.technologies.map((technology) => (
-              <span className="project-tag flex items-center gap-2" key={technology.id}>
-                {technology.icon}
+          <div className="project-tags flex flex-wrap justify-between gap-2">
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((technology) => (
+              <span className="project-tag flex items-center gap-2 transition duration-300 hover:-translate-y-1" key={technology.id}>
+                <span>{technology.icon}</span>
                 {technology.name}
               </span>
             ))}
-          </div>
+            </div>
 
-          {(project.urlGithub || project.urlProd) && (
+            {(project.urlGithub || project.urlProd) && (
             <div className="project-links flex flex-wrap gap-3">
               {project.urlGithub && (
                 <a
@@ -120,6 +112,7 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
               )}
             </div>
           )}
+          </div>
         </div>
       </section>
 

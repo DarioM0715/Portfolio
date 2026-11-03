@@ -15,6 +15,8 @@ interface ProjectsModalProps {
 
 export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", index = 0 }: ProjectsModalProps) {
   const [activeIndex, setActiveIndex] = useState(index);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const total = projects.length;
   const activeProject = projects[activeIndex];
@@ -23,16 +25,25 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
 
   useEffect(() => {
     if (isOpen) {
+      setShouldRender(true);
+      setIsClosing(false);
       setActiveIndex(Math.max(0, Math.min(index, total - 1)));
+    } else if (shouldRender) {
+      setIsClosing(true);
+      const timeout = setTimeout(() => {
+        setShouldRender(false);
+        setIsClosing(false);
+      }, 280);
+      return () => clearTimeout(timeout);
     }
   }, [isOpen, index, total]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!shouldRender || isClosing) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        handleClose();
       }
 
       if (event.key === "ArrowLeft") {
@@ -49,7 +60,7 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose, total]);
+  }, [shouldRender, isClosing, total]);
 
   useEffect(() => {
     if (activeIndex >= total) {
@@ -57,25 +68,29 @@ export function ProjectsModal({ projects, isOpen, onClose, title = "Proyectos", 
     }
   }, [activeIndex, total]);
 
-  if (!isOpen) return null;
+  const handleClose = () => {
+    onClose();
+  };
+
+  if (!shouldRender) return null;
 
   return (
     <div
-      className="projects-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/98 px-4 sm:px-6 lg:px-10"
+      className={`projects-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/98 px-4 sm:px-6 lg:px-10 transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
-          onClose();
+          handleClose();
         }
       }}
     >
-      <div className="projects-modal modal-animation relative flex h-[95vh] w-full max-w-7xl flex-col overflow-hidden" role="dialog" aria-modal="true" aria-label={title}>
+      <div className={`projects-modal modal-animation relative flex h-[95vh] w-full max-w-7xl flex-col overflow-hidden transition-all duration-300 ${isClosing ? "opacity-0 scale-95" : "opacity-100 scale-100"} border-4xl m-4`} role="dialog" aria-modal="true" aria-label={title}>
         <header className="projects-modal-header flex items-center justify-between gap-4 border-b border-white/10 px-2 pb-4">
           <div className="flex flex-col">
             <span className="text-xs uppercase tracking-[0.4em] text-white/40">{title}</span>
             <h1 className="text-lg sm:text-xl font-semibold text-white">{activeProject.title}</h1>
           </div>
 
-          <button type="button" className="flex h-10 w-10 items-center justify-center cursor-pointer bg-black" aria-label="Cerrar modal" onClick={onClose}>
+          <button type="button" className="flex h-10 w-10 items-center justify-center cursor-pointer bg-black border border-white/15 text-white/70 transition-colors hover:border-white/40 hover:text-white" aria-label="Cerrar modal" onClick={handleClose}>
             <X size={20} />
           </button>
         </header>
