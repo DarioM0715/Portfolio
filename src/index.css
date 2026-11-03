@@ -1,4 +1,7 @@
 @import "./styles/colors.css";
+@import "./styles/header.css";
+@import "./styles/projects.css";
+@import "./styles/patterns.css";
 @import "tailwindcss";
 
 @keyframes marquee {

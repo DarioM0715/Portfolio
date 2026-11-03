@@ -1,0 +1,20 @@
+/* HEADER ============================================================================================> */
+.nav-item {
+  position: relative;
+  display: inline-block;
+}
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+.nav-item:hover::after {
+  transform: scaleX(1);
+}
