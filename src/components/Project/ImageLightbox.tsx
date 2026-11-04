@@ -1,63 +1,79 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useLockBodyScroll } from "../useLockBodyScroll";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ImageLightboxProps {
   images: string[];
   currentIndex: number;
-  alt?: string;
+  title: string;
+  alt: string;
   isOpen: boolean;
   onClose: () => void;
   onPrevious: () => void;
   onNext: () => void;
 }
 
-export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose, onPrevious, onNext }: ImageLightboxProps) {
+export function ImageLightbox({ images, currentIndex, title, alt, isOpen, onClose, onPrevious, onNext }: ImageLightboxProps) {
+  const { t } = useLanguage();
   useLockBodyScroll(isOpen);
   const [shouldRender, setShouldRender] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [deltaX, setDeltaX] = useState(0);
+  const isClosing = !isOpen;
 
   useEffect(() => {
     if (isOpen) {
-      setShouldRender(true);
-      setIsClosing(false);
-      setIsDragging(false);
-      setDeltaX(0);
-    } else if (shouldRender) {
-      setIsClosing(true);
       const timeout = setTimeout(() => {
-        setShouldRender(false);
-        setIsClosing(false);
-      }, 250);
+        setShouldRender(true);
+        setIsDragging(false);
+        setDeltaX(0);
+      }, 0);
       return () => clearTimeout(timeout);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen || !shouldRender) return;
+
+    const timeout = setTimeout(() => setShouldRender(false), 250);
+    return () => clearTimeout(timeout);
+  }, [isOpen, shouldRender]);
 
   useEffect(() => {
     if (!shouldRender || isClosing) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
         onClose();
       }
       if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        event.stopPropagation();
         onPrevious();
       }
       if (event.key === "ArrowRight") {
+        event.preventDefault();
+        event.stopPropagation();
         onNext();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [shouldRender, isClosing, onClose, onPrevious, onNext]);
 
   if (!shouldRender || images.length === 0) return null;
 
-  const currentImage = images[currentIndex];
+  const currentImage = images[currentIndex] ?? images[0];
+  const imagePosition = t("projects_image", {
+    n: String(currentIndex + 1),
+    total: String(images.length),
+  });
 
   const handleClose = () => {
     onClose();
@@ -88,30 +104,40 @@ export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose,
     setDeltaX(0);
   };
 
-  return (
+  return createPortal(
     <div
-      className={`fixed inset-0 z-[10000] flex items-center justify-center bg-black/98 transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}
+      className={`image-lightbox-overlay transition-opacity duration-300 ${isClosing ? "is-closing" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="image-lightbox-title"
+      data-image-lightbox="true"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           handleClose();
         }
       }}
     >
-      <button
-        type="button"
-        className="absolute right-3 top-3 sm:right-6 sm:top-6 z-[10003] flex h-10 w-10 items-center justify-center border border-white/25 text-white/80 transition-all duration-200 hover:border-white hover:text-white hover:scale-105 rounded-xl"
-        aria-label="Cerrar imagen a pantalla completa"
-        onClick={handleClose}
-      >
-        <X size={22} />
-      </button>
+      <header className="image-lightbox-toolbar">
+        <div className="image-lightbox-heading">
+          <span>{t("image_lightbox_title")}</span>
+          <h2 id="image-lightbox-title">{title}</h2>
+        </div>
+        <button
+          type="button"
+          className="image-lightbox-close"
+          aria-label={t("projects_close")}
+          onClick={handleClose}
+        >
+          <X size={21} />
+        </button>
+      </header>
 
-      <div className={`relative flex h-[94vh] w-[96vw] items-center justify-center px-4 sm:px-16 transition-all duration-300 ${isClosing ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+      <div className="image-lightbox-stage">
         {images.length > 1 && (
           <button
             type="button"
-            className="hidden sm:flex absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[10002] h-11 w-11 sm:h-12 sm:w-12 items-center justify-center border border-white/30 bg-black/70 text-white transition-all duration-200 hover:bg-white/10 hover:scale-105 disabled:opacity-30 disabled:hover:bg-black/70 disabled:hover:scale-100"
-            aria-label="Imagen anterior"
+            className="image-lightbox-nav image-lightbox-nav-previous"
+            aria-label={t("projects_prev")}
             disabled={currentIndex === 0}
             onClick={onPrevious}
           >
@@ -120,7 +146,7 @@ export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose,
         )}
 
         <div
-          className="flex h-full w-full items-center justify-center touch-pan-y"
+          className="image-lightbox-frame touch-pan-y"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -128,7 +154,7 @@ export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose,
           <img
             src={currentImage}
             alt={alt}
-            className="max-h-full max-w-full object-contain select-none transition-transform duration-150"
+            className="image-lightbox-img select-none transition-transform duration-150"
             style={{ transform: isDragging ? `translateX(${deltaX}px)` : "translateX(0)" }}
             onClick={(e) => e.stopPropagation()}
             draggable={false}
@@ -138,8 +164,8 @@ export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose,
         {images.length > 1 && (
           <button
             type="button"
-            className="hidden sm:flex absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[10002] h-11 w-11 sm:h-12 sm:w-12 items-center justify-center border border-white/30 bg-black/70 text-white transition-all duration-200 hover:bg-white/10 hover:scale-105 disabled:opacity-30 disabled:hover:bg-black/70 disabled:hover:scale-100"
-            aria-label="Imagen siguiente"
+            className="image-lightbox-nav image-lightbox-nav-next"
+            aria-label={t("projects_next")}
             disabled={currentIndex === images.length - 1}
             onClick={onNext}
           >
@@ -148,11 +174,14 @@ export function ImageLightbox({ images, currentIndex, alt = "", isOpen, onClose,
         )}
       </div>
 
-      {images.length > 1 && (
-        <div className={`absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-[10002] border border-white/25 bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.4em] transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}>
-          {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
-        </div>
-      )}
-    </div>
+      <footer className="image-lightbox-footer">
+        <span className="image-lightbox-counter" aria-live="polite" aria-label={imagePosition}>
+          <span>{String(currentIndex + 1).padStart(2, "0")}</span>
+          <span aria-hidden="true">/</span>
+          <span>{String(images.length).padStart(2, "0")}</span>
+        </span>
+      </footer>
+    </div>,
+    document.body,
   );
 }

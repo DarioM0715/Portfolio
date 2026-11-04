@@ -7,7 +7,6 @@ import { useLanguage } from "../context/LanguageContext";
 const EMAIL = "dariomartinezotano@gmail.com";
 const PHONE_DISPLAY = "+53 5684 2449";
 const PHONE_TEL = "5356842449";
-const LOCATION = "La Havana, Cuba";
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=La+Habana%2C+Cuba";
 
 const socials = [
@@ -20,26 +19,25 @@ const socials = [
     },
 ];
 
-const dataItems = [
-    {
-        id: "phone",
-        labelKey: "contact_phone",
-        value: PHONE_DISPLAY,
-        href: `https://wa.me/${PHONE_TEL}`,
-        icon: <BsWhatsapp size={22} />,
-    },
-    {
-        id: "location",
-        labelKey: "contact_location",
-        value: LOCATION,
-        href: MAPS_URL,
-        icon: <MdGpsFixed size={23} />,
-    },
-];
-
 const Contact = () => {
     const { t } = useLanguage();
     const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">("idle");
+    const dataItems = [
+        {
+            id: "phone",
+            labelKey: "contact_phone",
+            value: PHONE_DISPLAY,
+            href: `https://wa.me/${PHONE_TEL}`,
+            icon: <BsWhatsapp size={22} />,
+        },
+        {
+            id: "location",
+            labelKey: "contact_location",
+            value: t("contact_city"),
+            href: MAPS_URL,
+            icon: <MdGpsFixed size={23} />,
+        },
+    ];
 
     const handleCopy = async (value: string) => {
         try {
@@ -97,6 +95,7 @@ const Contact = () => {
                                         href={item.href}
                                         target="_blank"
                                         rel="noreferrer"
+                                        aria-label={item.id === "location" ? `${t("contact_viewMap")}: ${t("contact_city")}` : undefined}
                                         className="contact-detail-card flex min-w-0 items-center gap-4 rounded-xl p-4"
                                     >
                                         <span className="contact-detail-icon flex items-center justify-center rounded-lg p-2.5">
@@ -124,7 +123,7 @@ const Contact = () => {
                             <h3 className="contact-cta-title">{t("about_question")}</h3>
                             <p className="contact-cta-description">{t("contact_description")}</p>
 
-                            <div className="contact-email flex w-full items-center gap-3 rounded-xl px-3 py-2.5">
+                            <div className="contact-email flex w-full items-center gap-3 rounded-xl px-3 py-2.5" role="group" aria-label={t("contact_email")}>
                                 <span className="min-w-0 flex-1 break-all text-sm font-medium text-white">{EMAIL}</span>
                                 <button
                                     type="button"

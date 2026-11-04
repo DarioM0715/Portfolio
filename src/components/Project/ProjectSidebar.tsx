@@ -1,4 +1,5 @@
 import type { Project } from "../../types";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ProjectSidebarProps {
   projects: Project[];
@@ -7,9 +8,10 @@ interface ProjectSidebarProps {
 }
 
 export function ProjectSidebar({ projects, activeIndex, onSelect}: ProjectSidebarProps) {
+  const { t } = useLanguage();
   return (
     <aside className="project-list relative flex flex-col min-h-0 w-full">
-      <nav className="flex flex-col gap-1 overflow-y-auto pb-3" aria-label="Listado de proyectos">
+      <nav className="flex flex-col gap-1 overflow-y-auto pb-3" aria-label={t("projects_list_label")}>
         {projects.map((project, index) => {
           const isActive = index === activeIndex;
 

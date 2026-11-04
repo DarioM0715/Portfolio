@@ -2,8 +2,17 @@ import { FiBriefcase, FiCode, FiUsers } from "react-icons/fi";
 import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
 import SkillsBackground from "./SkillsBackground";
+import type { ReactNode } from "react";
 
-const Card = ({ infocard }: any) => {
+interface CardProps {
+    infocard: {
+        icon: ReactNode;
+        title: string;
+        description: string;
+    };
+}
+
+const Card = ({ infocard }: CardProps) => {
     const { icon, title, description } = infocard;
 
     return (

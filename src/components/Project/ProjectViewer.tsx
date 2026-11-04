@@ -1,23 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Project } from "../../types";
 import { ProjectNavigation } from "./ProjectNavigation";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 import { ImageLightbox } from "./ImageLightbox";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ProjectViewerProps {
   project: Project;
 }
 
 export function ProjectViewer({ project }: ProjectViewerProps) {
-  const { title, altImage } = project;
+  const { title } = project;
+  const { t } = useLanguage();
   const images = project.images && project.images.length > 0 ? project.images : [project.image];
   const [imageIndex, setImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-  useEffect(() => {
-    setImageIndex(0);
-    setIsLightboxOpen(false);
-  }, [project.id]);
 
   const currentImage = images[imageIndex] ?? project.image;
   const imageCount = images.length;
@@ -48,9 +45,13 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
               className="project-detail-image-trigger relative h-full w-full"
               key={`${project.id}-${imageIndex}`}
               onClick={() => setIsLightboxOpen(true)}
-              aria-label="Ver imagen a pantalla completa"
+              aria-label={t("projects_fullscreen_label", { name: title })}
             >
-              <img src={currentImage} alt={altImage ?? title} className="project-detail-image h-full w-full object-contain" />
+              <img
+                src={currentImage}
+                alt={t("projects_screenshot_alt", { name: title })}
+                className="project-detail-image h-full w-full object-contain"
+              />
 
             </button>
 
@@ -93,9 +94,10 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
                   target="_blank"
                   rel="noreferrer"
                   className="btn-ghost flex items-center gap-2 px-4 py-2 text-sm"
+                  aria-label={t("projects_code_label", { name: title })}
                 >
                   <FiGithub />
-                  Código fuente
+                  {t("projects_code")}
                 </a>
               )}
 
@@ -105,9 +107,10 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
                   target="_blank"
                   rel="noreferrer"
                   className="btn-primary flex items-center gap-2 px-4 py-2 text-sm"
+                  aria-label={t("projects_live_label", { name: title })}
                 >
                   <FiExternalLink />
-                  Ver proyecto
+                  {t("projects_live")}
                 </a>
               )}
             </div>
@@ -119,7 +122,8 @@ export function ProjectViewer({ project }: ProjectViewerProps) {
       <ImageLightbox
         images={images}
         currentIndex={imageIndex}
-        alt={altImage ?? title}
+        title={title}
+        alt={t("projects_screenshot_alt", { name: title })}
         isOpen={isLightboxOpen}
         onClose={() => setIsLightboxOpen(false)}
         onPrevious={handlePreviousLightbox}

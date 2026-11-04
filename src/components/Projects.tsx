@@ -10,13 +10,13 @@ import type { Project } from "../types";
 import { ProjectsModal } from "./Project/ProjectModal";
 
 const Card = ({ project }: { project: Project }) => {
-    const { title, image, altImage, urlProd, urlGithub, technologies } = project;
+    const { title, image, urlProd, urlGithub, technologies } = project;
     const { t } = useLanguage();
 
     return (
         <div className="group relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
             <img
-                alt={altImage}
+                alt={t("projects_screenshot_alt", { name: title })}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -77,7 +77,6 @@ const Projects = () => {
     const projects: Project[] = projectsData.map((p) => ({
         id: p.id,
         image: p.image,
-        altImage: p.altImage,
         images: p.images,
         urlProd: p.urlProd,
         urlGithub: p.urlGithub,
@@ -130,7 +129,7 @@ const Projects = () => {
                 <FiGithub size={24} />
             </a>
 
-            <ProjectsModal projects={projects} isOpen={open} onClose={handleClose} index={activeIndex} />
+            <ProjectsModal projects={projects} isOpen={open} onClose={handleClose} index={activeIndex} title={t("projects_title")} />
         </div>
     );
 };

@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@lottiefiles/lottie-player": "^2.0.12",
     "@tailwindcss/vite": "^4.2.2",
     "flag-icons": "^7.5.0",
     "lucide-react": "^1.62.0",

@@ -87,8 +87,6 @@ const Header = () => {
 
                         <LanguageSwitcher />
 
-                        {/* Theme toggle */}
-                        {/* <ThemeToggleButton /> */}
                     </div>
                 )}
 
@@ -125,7 +123,7 @@ const Header = () => {
                             <a href="/Portfolio/" className="mobile-menu-brand" onClick={closeMenu}>
                                 <span>Dario.</span>portfolio
                             </a>
-                            <button type="button" className="mobile-menu-close" aria-label={t("projects_close")} onClick={closeMenu}>
+                            <button type="button" className="mobile-menu-close" aria-label={t("mobile_menu_close")} onClick={closeMenu}>
                                 <X size={20} />
                             </button>
                         </div>

@@ -161,24 +161,6 @@ body {
   }
 }
 
-/* TARJETAS */
-@utility card-glow {
-  border-radius: 0.75rem;
-  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  box-shadow:
-    0 3px 0 rgba(0, 0, 0, 0.85),
-    inset 0 1px 1px rgba(255, 255, 255, 0.06);
-  transition:
-    border-color 300ms,
-    box-shadow 300ms,
-    transform 300ms,
-    filter 150ms;
-
-  &:hover {
-    filter: brightness(1.08);
-  }
-}
-
 /* ICONOS */
 @utility icon-pill {
   background:
@@ -189,22 +171,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@utility input-glow {
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: 0.5rem;
-  background: var(--surface);
-  color: var(--text);
-  transition:
-    border-color 300ms,
-    box-shadow 300ms;
-
-  &:focus {
-    outline: none;
-    border-color: rgba(168, 85, 247, 0.7);
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
-  }
 }
 
 /* TITULOS RESALTADOS */

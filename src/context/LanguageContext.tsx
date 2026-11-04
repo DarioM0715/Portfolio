@@ -23,6 +23,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     useEffect(() => {
         localStorage.setItem("language", language);
+        document.documentElement.lang = language;
     }, [language]);
 
     const t = (key: string, variables?: Record<string, string>): string => {
