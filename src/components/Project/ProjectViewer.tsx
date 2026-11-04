@@ -9,7 +9,7 @@ interface ProjectViewerProps {
 }
 
 export function ProjectViewer({ project }: ProjectViewerProps) {
-  const { title, altImage, technologies } = project;
+  const { title, altImage } = project;
   const images = project.images && project.images.length > 0 ? project.images : [project.image];
   const [imageIndex, setImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);

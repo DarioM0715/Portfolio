@@ -1,11 +1,11 @@
-import { FiArrowUp, FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useLanguage } from "../context/LanguageContext";
 
 const Footer = () => {
     const { t } = useLanguage();
 
     return (
-        <footer className="portfolio-footer px-[6vw]">
+        <footer className="portfolio-footer page-gutter">
             <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex max-w-xl flex-col gap-2">
                     <a className="portfolio-footer-brand w-fit text-lg font-black tracking-tight" href="#home">
@@ -33,9 +33,6 @@ const Footer = () => {
                         aria-label="LinkedIn"
                     >
                         <FiLinkedin size={18} />
-                    </a>
-                    <a className="portfolio-footer-link" href="#home" aria-label={t("nav_home")}>
-                        <FiArrowUp size={18} />
                     </a>
                 </div>
             </div>

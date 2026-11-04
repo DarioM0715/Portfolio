@@ -7,7 +7,7 @@ const Home = () => {
     const { t } = useLanguage();
 
     return (
-        <section id="home" className="home-gradient flex min-h-screen items-center px-[6vw] pt-20 zz-background-pattern-animation">
+        <section id="home" className="home-gradient page-gutter flex min-h-screen items-center pt-20 zz-background-pattern-animation">
             <div className="home-content mx-auto flex w-full max-w-7xl items-center justify-between gap-10">
                 <div className="flex min-w-0 w-full flex-col gap-10 lg:max-w-2xl">
                     <div className="flex flex-col">

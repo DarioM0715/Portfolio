@@ -42,12 +42,12 @@ const About = () => {
     return (
         <div
             id="about"
-            className="relative py-16 lg:min-h-screen overflow-hidden"
+            className="page-gutter relative py-16 lg:min-h-screen overflow-hidden"
         >
             <div className="absolute inset-0 z-1">
                 <SkillsBackground />
             </div>
-            <div className="relative grid grid-cols-1 gap-12 xl:grid-cols-2 items-center px-[6vw] min-h-[inherit] py-16 lg:py-0 z-2">
+            <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 xl:grid-cols-2 items-center min-h-[inherit] py-16 lg:py-0 z-2">
                 <div className="relative flex flex-col gap-4 z-10">
                     <h2 className="font-black text-4xl tracking-tight title-glow">{t("about_title")}</h2>
 

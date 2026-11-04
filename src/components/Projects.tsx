@@ -98,16 +98,27 @@ const Projects = () => {
     };
 
     return (
-        <div  id="projects" className="py-16 flex items-center justify-center flex-col gap-8 px-[6vw]">
-            <div className="flex items-center flex-col gap-2 ">
-                <h2 className="text-4xl font-black tracking-tight">{t("projects_title")}</h2>
-                <p className="text-lg font-semibold text-(--text-secondary)">{t("projects_description")}</p>
+        <div id="projects" className="projects-section page-gutter py-20 flex items-center justify-center flex-col gap-10">
+            <div className="projects-section-heading mx-auto flex w-full max-w-7xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div className="flex flex-col gap-3">
+                    <span className="projects-eyebrow">{t("projects_eyebrow")}</span>
+                    <h2 className="text-4xl font-black tracking-tight sm:text-5xl">{t("projects_title")}</h2>
+                    <p className="max-w-2xl text-base font-semibold leading-relaxed text-(--text-secondary) sm:text-lg">{t("projects_description")}</p>
+                </div>
+                <div className="projects-count" aria-label={`${projects.length} ${t("projects_count_label")}`}>
+                    <span>{String(projects.length).padStart(2, "0")}</span>
+                    <span>{t("projects_count_label")}</span>
+                </div>
             </div>
 
             <div className="w-full max-w-7xl">
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
+                <ul className="projects-grid">
                     {projects.map((project, index) => (
-                        <li key={project.id} onClick={() => handleOpen(index)} className="h-full">
+                        <li
+                            key={project.id}
+                            onClick={() => handleOpen(index)}
+                            className={`projects-grid-item projects-grid-item-${index + 1}`}
+                        >
                             <Card project={project} />
                         </li>
                     ))}
@@ -115,7 +126,7 @@ const Projects = () => {
             </div>
 
             <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2 transition duration-300 hover:scale-105" href="https://github.com/DarioM0715">
-                <span>View more projects on GitHub</span>
+                <span>{t("projects_more_software")}</span>
                 <FiGithub size={24} />
             </a>
 

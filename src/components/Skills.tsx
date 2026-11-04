@@ -30,8 +30,10 @@ const Skills = () => {
             id="skills"
             className="py-16 lg:min-h-screen lg:py-0 flex flex-col justify-center gap-6 w-full mx-auto border-b border-white/10 overflow-hidden"
         >
-            <div className="flex flex-col items-center gap-4 px-[6vw]">
-                <h2 className="text-4xl title-glow font-black tracking-tight">{t("skills_title")}</h2>
+            <div className="page-gutter w-full">
+                <div className="mx-auto w-full max-w-7xl">
+                    <h2 className="text-4xl title-glow font-black tracking-tight">{t("skills_title")}</h2>
+                </div>
             </div>
 
             <div className="relative w-full flex flex-col gap-4">

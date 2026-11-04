@@ -1,46 +1,52 @@
+.contact-section {
+  isolation: isolate;
+}
+
+.contact-section-backdrop {
+  z-index: -1;
+}
+
+.contact-section-eyebrow,
+.contact-cta-eyebrow {
+  color: #c084fc;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contact-section-eyebrow::before {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  margin-right: 0.7rem;
+  vertical-align: middle;
+  background: linear-gradient(90deg, #a855f7, transparent);
+  content: "";
+}
+
 .contact-card {
-  border-color: rgba(192, 132, 252, 0.2);
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  border: 1px solid rgba(192, 132, 252, 0.22);
   background:
-    radial-gradient(ellipse at 0% 0%, rgba(168, 85, 247, 0.11), transparent 42%),
-    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 1.4px),
+    radial-gradient(ellipse at 0% 0%, rgba(168, 85, 247, 0.1), transparent 42%),
     radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 1.4px),
     linear-gradient(145deg, #17151b, #0d0c0f 72%);
-  background-size: auto, 7px 7px, 7px 7px, auto;
-  background-position: 0 0, 0 0, 3.5px 3.5px, 0 0;
+  background-size: auto, 7px 7px, auto;
   box-shadow:
     0 24px 80px rgba(0, 0, 0, 0.48),
     0 0 0 1px rgba(168, 85, 247, 0.06),
     inset 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.contact-card-header {
-  border-color: rgba(255, 255, 255, 0.09);
-  background: linear-gradient(100deg, rgba(168, 85, 247, 0.08), transparent 70%);
-}
-
-.contact-email {
+.contact-card-main {
   min-width: 0;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(7, 7, 8, 0.68);
-}
-
-.contact-email > span {
-  overflow-wrap: anywhere;
-}
-
-.contact-copy-button {
-  display: inline-flex;
-  min-width: 34px;
-  min-height: 34px;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem;
-  border-radius: 0.55rem;
+  padding: clamp(1.5rem, 4vw, 3.25rem);
 }
 
 .contact-avatar {
   flex: 0 0 auto;
-  border-color: rgba(192, 132, 252, 0.45);
+  border: 1px solid rgba(192, 132, 252, 0.45);
   background:
     radial-gradient(circle at 35% 25%, rgba(192, 132, 252, 0.24), transparent 58%),
     linear-gradient(145deg, #1d1725, #09080b);
@@ -48,6 +54,10 @@
     0 0 0 5px rgba(168, 85, 247, 0.06),
     0 8px 26px rgba(0, 0, 0, 0.35),
     inset 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.contact-name {
+  text-wrap: balance;
 }
 
 .contact-social-link {
@@ -58,19 +68,13 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
-.contact-description {
-  border-color: rgba(255, 255, 255, 0.08);
-  border-left: 2px solid rgba(168, 85, 247, 0.55);
-  border-radius: 0.6rem;
-  background:
-    linear-gradient(120deg, rgba(168, 85, 247, 0.075), transparent 58%),
-    rgba(7, 7, 8, 0.78);
+.contact-details-grid {
+  min-width: 0;
 }
 
 .contact-detail-card {
   min-width: 0;
-  border-color: rgba(255, 255, 255, 0.1);
-  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
     linear-gradient(120deg, rgba(168, 85, 247, 0.075), transparent 58%),
     rgba(7, 7, 8, 0.78);
@@ -94,29 +98,169 @@
     0 0 20px rgba(168, 85, 247, 0.07);
 }
 
-.contact-detail-card:focus-visible {
+.contact-detail-card:focus-visible,
+.contact-social-link:focus-visible,
+.contact-copy-button:focus-visible,
+.contact-cv-link:focus-visible {
   outline: 2px solid #c084fc;
   outline-offset: 3px;
 }
 
 .contact-detail-icon {
   flex: 0 0 auto;
-  border-color: rgba(192, 132, 252, 0.22);
+  border: 1px solid rgba(192, 132, 252, 0.22);
   background: rgba(168, 85, 247, 0.08);
   color: #d8b4fe;
 }
 
-@media (max-width: 639px) {
-  .contact-card-header {
-    padding: 1rem;
+.contact-card-cta {
+  min-width: 0;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(168, 85, 247, 0.2), transparent 58%),
+    linear-gradient(150deg, rgba(30, 21, 39, 0.84), rgba(11, 10, 13, 0.88));
+}
+
+.contact-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.contact-availability-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 0.8rem rgba(192, 132, 252, 0.8);
+}
+
+.contact-cta-eyebrow {
+  margin-top: 0.75rem;
+}
+
+.contact-cta-title {
+  max-width: 16ch;
+  font-size: clamp(1.6rem, 2.8vw, 2.35rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.contact-cta-description {
+  max-width: 42ch;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.contact-email {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 7, 8, 0.68);
+}
+
+.contact-email > span {
+  overflow-wrap: anywhere;
+}
+
+.contact-copy-button {
+  display: inline-flex;
+  min-width: 36px;
+  min-height: 36px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 0.55rem;
+}
+
+.contact-cv-link {
+  text-align: center;
+}
+
+.contact-toast {
+  pointer-events: none;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 0.75rem;
+  background: rgba(20, 15, 27, 0.96);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -0.5rem);
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 767px) {
+  .contact-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-card-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 0;
+  }
+
+  .contact-cta-title,
+  .contact-cta-description {
+    max-width: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .contact-card-main,
+  .contact-card-cta {
+    padding: 1.25rem;
+  }
+
+  .contact-profile {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-avatar {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 1rem;
+  }
+
+  .contact-profile-copy {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-name {
+    font-size: 1.25rem;
   }
 
   .contact-email {
-    max-width: 100%;
     padding-inline: 0.75rem;
   }
 
   .contact-email > span {
     font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-detail-card {
+    transition: none;
   }
 }
