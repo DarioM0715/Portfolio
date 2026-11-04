@@ -1,25 +1,26 @@
 import { LanguageProvider } from "./context/LanguageContext";
-import { ThemeProvider } from "./context/ThemeContext";
 
 import Home from "./components/Home";
 import Projects from "./components/Projects";
 import About from "./components/About";
-import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 
 const App = () => {
     return (
         <LanguageProvider>
-            <ThemeProvider>
-                <Layout>
-                    <Home />
+            <Layout>
+                <Home />
+                <div className="portfolio-sections-background">
                     <About />
-                    <Projects />
-                    <Skills />
-                    <Contact />
-                </Layout>
-            </ThemeProvider>
+                    <div className="portfolio-after-about">
+                        <Projects />
+                        <Contact />
+                        <Footer />
+                    </div>
+                </div>
+            </Layout>
         </LanguageProvider>
     );
 };

@@ -1,51 +1,53 @@
-import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
-import { useIsDesktop } from "./useIsDestop";
+import { Code2 } from "lucide-react";
+import { FaReact, FaPython } from "react-icons/fa";
+import { BsTypescript } from "react-icons/bs";
 
 const Home = () => {
     const { t } = useLanguage();
-    const isDesktop = useIsDesktop(1024);
 
     return (
-        <section id="home" className="flex justify-between min-h-screen items-center border-b border-violet-500/10 px-[6vw]">
-            <div className="flex flex-col gap-10 min-w-0 w-full lg:max-w-2xl">
-                <div className="flex flex-col">
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold">
-                        {t("home_title")}
-                        <br />
-                        {t("home_subtitle1")}
-                        <br />
-                        <span className="title-glow">{t("home_subtitle2")}</span>
-                    </h1>
+        <section id="home" className="home-gradient page-gutter flex min-h-screen items-center pt-20 zz-background-pattern-animation">
+            <div className="home-content mx-auto flex w-full max-w-7xl items-center justify-between gap-10">
+                <div className="flex min-w-0 w-full flex-col gap-10 lg:max-w-2xl">
+                    <div className="flex flex-col">
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
+                            <span className="text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                                {t("home_title")}
+                            </span>
+                            <br />
+                            <span className="text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                                {t("home_subtitle1")}
+                            </span>
+                            <br />
+                            <span>{t("home_subtitle2")}</span>
+                        </h1>
+                    </div>
+
+                    <div className="flex items-center gap-4 flex-wrap">
+                        <a className="btn-primary px-6 py-2 transition duration-300 hover:scale-105" href="#projects">{t("home_viewProjects")}</a>
+                        <a className="btn-ghost px-6 py-2 transition duration-300 hover:scale-105" href="#contact">{t("home_contact")}</a>
+                    </div>
                 </div>
 
-                <div>
-                    <p className="font-semibold text-xl 2xl:text-2xl">{t("home_description")}</p>
-                </div>
-
-                <div className="flex items-center gap-4">
-                    <Button className="btn-primary transform transition-all duration-150 p-4 hover:-translate-y-1">
-                        <a href="#projects">{t("home_viewProjects")}</a>
-                    </Button>
-
-                    <Button className="btn-ghost transform transition-all duration-150 p-4 hover:-translate-y-1">
-                        <a href="#contact">{t("home_contact")}</a>
-                    </Button>
+                <div className="home-visual hidden md:flex" aria-hidden="true">
+                    <div className="home-orbit home-orbit-outer" />
+                    <div className="home-orbit home-orbit-inner" />
+                    <div className="home-visual-glow" />
+                    <div className="home-code-emblem">
+                        <Code2 className="home-code-icon transition duration-300 hover:scale-110" strokeWidth={1.4} />
+                    </div>
+                    <div className="home-floating-icon home-floating-react transition duration-300 hover:scale-110">
+                        <FaReact />
+                    </div>
+                    <span className="home-floating-icon home-floating-label-top transition duration-300 hover:scale-110">
+                        <FaPython/>
+                    </span>
+                    <span className="home-floating-icon home-floating-label-bottom transition duration-300 hover:scale-110">
+                        <BsTypescript/>
+                    </span>
                 </div>
             </div>
-
-            {/* ANIMATED ASSETS */}
-            {isDesktop && 
-                <div className="hidden lg:flex flex-1 lg:min-w-80 min-w-0 justify-center overflow-hidden">
-                    <lottie-player
-                        src={`${import.meta.env.BASE_URL}animations/hero.json`}
-                        background="transparent"
-                        speed="1"
-                        loop
-                        autoplay
-                        style={{ width: "100%", height: "auto", maxWidth: "560px" }}
-                    ></lottie-player>
-                </div>}
         </section>
     );
 };

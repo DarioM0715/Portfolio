@@ -8,38 +8,70 @@ const Skills = () => {
     const { t } = useLanguage();
     
     const skills = [
-        { id: 1, icon: <FaHtml5 size={32} />, name: "HTML5" },
-        { id: 2, icon: <FaCss3 size={32} />, name: "CSS3" },
-        { id: 3, icon: <RiTailwindCssFill size={32} />, name: "Tailwind CSS" },
-        { id: 4, icon: <BsJavascript size={32} />, name: "JavaScript" },
-        { id: 5, icon: <BsTypescript size={32} />, name: "TypeScript" },
-        { id: 6, icon: <FaPython size={32} />, name: "Python" },
-        { id: 7, icon: <FaReact size={32} />, name: "React" },
-        { id: 8, icon: <SiDjango size={32} />, name: "Django" },
-        { id: 9, icon: <SiExpress size={32} />, name: "Express" },
-        { id: 10, icon: <FaGit size={32} />, name: "Git" },
-        { id: 11, icon: <FaGithub size={32} />, name: "Github" },
+        { id: 1, icon: <FaHtml5 />, name: "HTML5" },
+        { id: 2, icon: <FaCss3 />, name: "CSS3" },
+        { id: 3, icon: <RiTailwindCssFill />, name: "Tailwind CSS" },
+        { id: 4, icon: <BsJavascript />, name: "JavaScript" },
+        { id: 5, icon: <BsTypescript />, name: "TypeScript" },
+        { id: 6, icon: <FaPython />, name: "Python" },
+        { id: 7, icon: <FaReact />, name: "React" },
+        { id: 8, icon: <SiDjango />, name: "Django" },
+        { id: 9, icon: <SiExpress />, name: "Express" },
+        { id: 10, icon: <FaGit />, name: "Git" },
+        { id: 11, icon: <FaGithub />, name: "Github" },
     ];
+
+    const row1 = [...skills, ...skills];
+    const row2 = [...skills.slice(6), ...skills.slice(0, 6), ...skills.slice(6), ...skills.slice(0, 6)];
+    const row3 = [...skills.slice(3), ...skills.slice(0, 3), ...skills.slice(3), ...skills.slice(0, 3)];
 
     return (
         <section
             id="skills"
-            className="py-16 lg:min-h-screen lg:py-0 flex flex-col justify-center gap-16 w-full mx-auto text-center border-b border-violet-500/10 px-[6vw]"
+            className="py-16 lg:min-h-screen lg:py-0 flex flex-col justify-center gap-6 w-full mx-auto border-b border-white/10 overflow-hidden"
         >
-            <div className="flex flex-col items-center gap-4">
-                <h2 className="text-3xl title-glow font-bold">{t("skills_title")}</h2>
-                <p className="text-lg font-semibold text-center">{t("skills_description")}</p>
+            <div className="page-gutter w-full">
+                <div className="mx-auto w-full max-w-7xl">
+                    <h2 className="text-4xl title-glow font-black tracking-tight">{t("skills_title")}</h2>
+                </div>
             </div>
 
-            <div className="gap-8 w-full">
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ">
-                    {skills.map((tech) => (
-                        <li key={tech.id} className="card-glow flex flex-col items-center justify-center gap-2 p-4 transition-transform hover:-translate-y-1 hover:scale-105 text-(--muted) hover:text-violet-400">
-                            {tech.icon}
-                            <span className="text-lg font-semibold">{tech.name}</span>
-                        </li>
+            <div className="relative w-full flex flex-col gap-4">
+                <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-(--bg) to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-(--bg) to-transparent z-10 pointer-events-none" />
+                
+                <div className="flex animate-marquee hover:[animation-play-state:paused]">
+                    {row1.map((tech, index) => (
+                        <div
+                            key={`row1-${tech.id}-${index}`}
+                            className="flex items-center justify-center mx-6 text-white/80 transition-all hover:text-white hover:scale-110"
+                        >
+                            <div className="text-5xl md:text-6xl lg:text-7xl">{tech.icon}</div>
+                        </div>
                     ))}
-                </ul>
+                </div>
+                
+                <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
+                    {row2.map((tech, index) => (
+                        <div
+                            key={`row2-${tech.id}-${index}`}
+                            className="flex items-center justify-center mx-6 text-white/70 transition-all hover:text-white hover:scale-110"
+                        >
+                            <div className="text-5xl md:text-6xl lg:text-7xl">{tech.icon}</div>
+                        </div>
+                    ))}
+                </div>
+                
+                <div className="flex animate-marquee hover:[animation-play-state:paused]">
+                    {row3.map((tech, index) => (
+                        <div
+                            key={`row3-${tech.id}-${index}`}
+                            className="flex items-center justify-center mx-6 text-white/75 transition-all hover:text-white hover:scale-110"
+                        >
+                            <div className="text-5xl md:text-6xl lg:text-7xl">{tech.icon}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
