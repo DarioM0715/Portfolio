@@ -1,19 +1,26 @@
-import { BiTag } from "react-icons/bi";
-import { FaMobileAlt, FaPaintBrush, FaTachometerAlt } from "react-icons/fa";
+import { FiBriefcase, FiCode, FiUsers } from "react-icons/fi";
 import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
+import SkillsBackground from "./SkillsBackground";
+import type { ReactNode } from "react";
 
-const Card = ({ infocard }: any) => {
-    const { id, icon, title, description } = infocard;
+interface CardProps {
+    infocard: {
+        icon: ReactNode;
+        title: string;
+        description: string;
+    };
+}
+
+const Card = ({ infocard }: CardProps) => {
+    const { icon, title, description } = infocard;
 
     return (
-        <div
-            id={id}
-            className="card-glow flex flex-col gap-4 p-4 transition-transform hover:-translate-y-1 h-full"
-        >
-            <div className="icon-pill h-12 w-12 text-violet-400">{icon}</div>
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <p className="text-lg font-semibold">{description}</p>
+        <div className="relative overflow-hidden flex flex-col gap-3 p-6 transition-all duration-300 hover:-translate-y-1 group border border-white/10 rounded-lg bg-linear-to-br from-[#2a2a2a] to-[#151515] backdrop-blur-sm">
+            <div className="absolute inset-0 bg-linear-to-r from-[#a855f7]/0 via-[#a855f7]/5 to-[#a855f7]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <div className="relative icon-pill h-12 w-12">{icon}</div>
+            <h3 className="relative text-xl font-bold text-white">{title}</h3>
+            <p className="relative text-sm font-medium text-(--text-secondary) leading-relaxed">{description}</p>
         </div>
     );
 };
@@ -23,61 +30,55 @@ const About = () => {
     const infocards = [
         {
             id: 1,
-            icon: <BiTag size={24} />,
-            title: t("about_card_developer"),
-            description: t("about_card_dev_desc"),
+            icon: <FiCode size={24} />,
+            title: t("about_card_freelance"),
+            description: t("about_card_freelance_desc"),
         },
         {
             id: 2,
-            icon: <FaMobileAlt size={24} />,
-            title: t("about_card_responsive"),
-            description: t("about_card_responsive_desc"),
+            icon: <FiBriefcase size={24} />,
+            title: t("about_card_fulltime"),
+            description: t("about_card_fulltime_desc"),
         },
         {
             id: 3,
-            icon: <FaPaintBrush size={24} />,
-            title: t("about_card_uiux"),
-            description: t("about_card_uiux_desc"),
-        },
-        {
-            id: 4,
-            icon: <FaTachometerAlt size={24} />,
-            title: t("about_card_performance"),
-            description: t("about_card_performance_desc"),
+            icon: <FiUsers size={24} />,
+            title: t("about_card_collab"),
+            description: t("about_card_collab_desc"),
         },
     ];
 
     return (
         <div
             id="about"
-            className="py-16 lg:min-h-screen grid grid-cols-1 gap-8 xl:grid-cols-2 items-center border-b border-violet-500/10 px-[6vw]"
+            className="page-gutter relative py-16 lg:min-h-screen overflow-hidden"
         >
-            <div className="flex flex-col gap-2">
-                <h2 className="title-glow font-bold text-4xl">{t("about_title")}</h2>
-
-                <p className="font-semibold text-2xl">{t("about_description")}</p>
-
-                <p className="font-semibold text-md text-violet-600 text-xl">
-                    {t("about_question")}{" "}
-                    <a href="#contact">
-                        <span className="text-violet-600 hover:underline cursor-pointer">{t("about_contactMe")}</span>
-                    </a>
-                </p>
-
-                <div className="mt-4 flex gap-4 text-white">
-                    <Button className="btn-primary transform transition-all duration-150 p-4 hover:-translate-y-1">
-                        {t("nav_downloadCv")}
-                    </Button>
-                    <a href="#contact" className="btn-ghost transform transition-all duration-150 p-4 hover:-translate-y-1 font-semibold">
-                        Contact
-                    </a>
-                </div>
+            <div className="absolute inset-0 z-1">
+                <SkillsBackground />
             </div>
+            <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 xl:grid-cols-2 items-center min-h-[inherit] py-16 lg:py-0 z-2">
+                <div className="relative flex flex-col gap-4 z-10">
+                    <h2 className="font-black text-4xl tracking-tight title-glow">{t("about_title")}</h2>
 
-            <div className="items-center grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {infocards.map((info) => (
-                    <Card key={info.id} infocard={info} />
-                ))}
+                    <p className="font-semibold text-xl text-white leading-relaxed">{t("about_description")}</p>
+
+                    <div className="mt-4 flex flex-wrap gap-4 text-white">
+                        <Button className="btn-primary px-6 py-2 transition duration-300 hover:scale-110">
+                            {t("nav_downloadCv")}
+                        </Button>
+                        <a href="#contact" className="btn-ghost px-6 py-2 transition duration-300 hover:scale-110">
+                            {t("nav_contact")}
+                        </a>
+                    </div>
+                </div>
+
+                <div className="relative items-center grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {infocards.map((info, index) => (
+                        <div key={info.id} className={index === 2 ? "md:col-span-2" : ""}>
+                            <Card infocard={info} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

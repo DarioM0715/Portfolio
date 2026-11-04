@@ -1,6 +1,6 @@
 import type { Project } from "../types";
 
-import portfolioPicture from "../assets/images/project1_portfolio/Picture1.webp";
+import portfolioPicture from "../assets/images/project1_portfolio/Picture1.png";
 import produceosPicture1 from "../assets/images/project2_produceos/Picture1.webp";
 import produceosPicture2 from "../assets/images/project2_produceos/Picture2.webp";
 import produceosPicture3 from "../assets/images/project2_produceos/Picture3.webp";
@@ -27,31 +27,31 @@ export type ProjectData = Omit<Project, "title" | "description"> & {
 };
 
 const defaultTechnologies = [
-    { id: 1, name: "React", icon: <FaReact /> },
-    { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+    { id: 1, name: "React", icon: <FaReact size={20}/> },
+    { id: 2, name: "TypeScript", icon: <BsTypescript size={20}/> },
+    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss size={20}/> },
 ];
 
 const produceosTechnologies = [
-    { id: 1, name: "React", icon: <FaReact /> },
-    { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-    { id: 4, name: "Express", icon: <SiExpress/>},
-    { id: 5, name: "Django", icon: <SiDjango/>},
-    { id: 6, name: "Python", icon: <DiPython/>}
+    { id: 1, name: "React", icon: <FaReact size={20}/> },
+    { id: 2, name: "TypeScript", icon: <BsTypescript size={20}/> },
+    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss size={20}/> },
+    { id: 4, name: "Express", icon: <SiExpress size={20}/>},
+    { id: 5, name: "Django", icon: <SiDjango size={20}/>},
+    { id: 6, name: "Python", icon: <DiPython size={20}/>}
 ]
 
 const myLittleHomeTechnologies = [
-    { id: 1, name: "React", icon: <FaReact /> },
-    { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
+    { id: 1, name: "React", icon: <FaReact size={20}/> },
+    { id: 2, name: "TypeScript", icon: <BsTypescript size={20}/> },
+    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss size={20}/> },
 ];
 
 const sapiensTechnologies = [
-    { id: 1, name: "React", icon: <FaReact /> },
-    { id: 2, name: "TypeScript", icon: <BsTypescript /> },
-    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss /> },
-    { id: 4, name: "Express", icon: <SiExpress/>},
+    { id: 1, name: "React", icon: <FaReact size={20}/> },
+    { id: 2, name: "TypeScript", icon: <BsTypescript size={20}/> },
+    { id: 3, name: "TailwindCSS", icon: <SiTailwindcss size={20}/> },
+    { id: 4, name: "Express", icon: <SiExpress size={20}/>},
 ]
 
 export const projectsData: ProjectData[] = [
@@ -60,9 +60,8 @@ export const projectsData: ProjectData[] = [
         titleKey: "project_produceos_title",
         descriptionKey: "project_produceos_description",
         image: produceosPicture1,
-        altImage: "Captura de pantalla de Reserva Produce OS",
         images: [produceosPicture1, produceosPicture2, produceosPicture3, produceosPicture4, produceosPicture5],
-        urlProd: "https://produceos.agrileaf.com/",
+        urlProd: "https://app.produceos.com/",
         urlGithub: "",
         technologies: produceosTechnologies,
     },
@@ -71,7 +70,6 @@ export const projectsData: ProjectData[] = [
         titleKey: "project_mylittlehome_title",
         descriptionKey: "project_mylittlehome_description",
         image: myLittleHomePicture1,
-        altImage: "Captura de pantalla de MyLittleHome",
         images: [
             myLittleHomePicture1,
             myLittleHomePicture2,
@@ -89,7 +87,6 @@ export const projectsData: ProjectData[] = [
         titleKey: "project_portfolio_title",
         descriptionKey: "project_portfolio_description",
         image: portfolioPicture,
-        altImage: "Captura de pantalla de Dario.Portfolio",
         images: [portfolioPicture],
         urlProd: "",
         urlGithub: "https://github.com/DarioM0715/Portfolio",
@@ -100,7 +97,6 @@ export const projectsData: ProjectData[] = [
         titleKey: "project_sapiens_title",
         descriptionKey: "project_sapiens_description",
         image: sapiensPicture,
-        altImage: "Captura de pantalla de Sapiens",
         images: [sapiensPicture, sapiensPicture2, sapiensPicture3],
         urlProd: "",
         urlGithub: "https://github.com/DarioM0715/Sapiens",

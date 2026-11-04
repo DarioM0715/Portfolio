@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type Technology = {
     id: number;
@@ -12,27 +12,8 @@ export type Project = {
     title: string;
     description: string;
     image: string;
-    altImage: string;
     images?: string[];
     urlProd?: string;
     urlGithub?: string;
     technologies: Technology[];
 };
-
-interface LottiePlayerProps {
-    src?: string;
-    background?: string;
-    speed?: number | string;
-    loop?: boolean;
-    autoplay?: boolean;
-    controls?: boolean;
-    style?: CSSProperties;
-}
-
-declare module "react" {
-    namespace JSX {
-        interface IntrinsicElements {
-            "lottie-player": LottiePlayerProps;
-        }
-    }
-}

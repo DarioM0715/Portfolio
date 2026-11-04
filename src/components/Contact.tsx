@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { MdCheck, MdContentCopy, MdGpsFixed } from "react-icons/md";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { BsWhatsapp } from "react-icons/bs";
+import { MdContentCopy, MdGpsFixed } from "react-icons/md";
 import { useLanguage } from "../context/LanguageContext";
-import { BsGoogle, BsWhatsapp } from "react-icons/bs";
 
 const EMAIL = "dariomartinezotano@gmail.com";
 const PHONE_DISPLAY = "+53 5684 2449";
 const PHONE_TEL = "5356842449";
-const LOCATION = "La Havana, Cuba";
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=La+Habana%2C+Cuba";
 
 const socials = [
@@ -20,131 +19,145 @@ const socials = [
     },
 ];
 
-const dataItems = [
-    {
-        id: "email",
-        labelKey: "contact_email",
-        value: EMAIL,
-        href: `mailto:${EMAIL}`,
-        icon: <BsGoogle size={22} />,
-        action: "copy" as const,
-    },
-    {
-        id: "phone",
-        labelKey: "contact_phone",
-        value: PHONE_DISPLAY,
-        href: `https://wa.me/${PHONE_TEL}`,
-        icon: <BsWhatsapp size={22} />,
-        action: "copy" as const,
-    },
-    {
-        id: "location",
-        labelKey: "contact_location",
-        value: LOCATION,
-        href: MAPS_URL,
-        icon: <MdGpsFixed size={22} />,
-        action: "link" as const,
-    },
-];
-
 const Contact = () => {
     const { t } = useLanguage();
-    const [copied, setCopied] = useState<string | null>(null);
+    const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">("idle");
+    const dataItems = [
+        {
+            id: "phone",
+            labelKey: "contact_phone",
+            value: PHONE_DISPLAY,
+            href: `https://wa.me/${PHONE_TEL}`,
+            icon: <BsWhatsapp size={22} />,
+        },
+        {
+            id: "location",
+            labelKey: "contact_location",
+            value: t("contact_city"),
+            href: MAPS_URL,
+            icon: <MdGpsFixed size={23} />,
+        },
+    ];
 
-    const handleCopy = async (id: string, value: string) => {
+    const handleCopy = async (value: string) => {
         try {
             await navigator.clipboard.writeText(value);
-            setCopied(id);
-            setTimeout(() => setCopied(null), 2000);
+            setCopyStatus("success");
         } catch {
-            setCopied(null);
+            setCopyStatus("error");
         }
+        setTimeout(() => setCopyStatus("idle"), 1800);
     };
 
     return (
-        <div id="contact" className="flex flex-col justify-center py-32 lg:min-h-screen lg:py-0 gap-12 px-[6vw]">
-            <div className="flex flex-col items-center gap-4">
-                <h2 className="text-3xl text-center font-bold title-glow">{t("contact_title")}</h2>
-                <p className="text-lg font-semibold text-center">{t("contact_description")}</p>
-            </div>
+        <>
+            <section id="contact" className="contact-section page-gutter relative py-20">
+                <div className="contact-section-backdrop absolute inset-0" />
 
-            <div className="card-glow mx-auto flex w-full max-w-4xl flex-col overflow-hidden md:flex-row">
-                {/* Identidad */}
-                <div className="flex flex-col items-center justify-center gap-4 border-b border-violet-500/20 bg-violet-500/5 p-8 md:w-2/5 md:border-b-0 md:border-r">
-                    <div className="flex h-28 w-28 items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/10 text-4xl font-bold text-violet-400 shadow-[0_0_25px_rgba(124,58,237,0.45)]">
-                        DM
-                    </div>
+                <div className="contact-section-content relative mx-auto flex w-full max-w-7xl flex-col gap-8">
+                    <header className="contact-section-heading flex flex-col gap-3">
+                        <span className="contact-section-eyebrow">{t("contact_eyebrow")}</span>
+                        <h2 className="text-4xl font-black tracking-tight sm:text-5xl">{t("contact_title")}</h2>
+                    </header>
 
-                    <div className="text-center">
-                        <p className="text-xl font-bold">Dario Martinez</p>
-                        <p className="text-sm font-semibold text-violet-400">{t("contact_role")}</p>
-                    </div>
+                    <div className="contact-card grid w-full overflow-hidden rounded-2xl">
+                        <div className="contact-card-main flex flex-col justify-between gap-10">
+                            <div className="contact-profile flex items-center gap-6">
+                                <div className="contact-avatar flex h-24 w-24 items-center justify-center rounded-full text-2xl font-black">
+                                    DM
+                                </div>
 
-                    <div className="mt-2 flex items-center gap-3">
-                        {socials.map((social) => (
+                                <div className="contact-profile-copy flex min-w-0 flex-col items-start gap-2">
+                                    <h3 className="contact-name text-2xl font-bold text-white sm:text-3xl">Dario Martinez Otaño</h3>
+                                    <p className="text-base font-medium text-white/65">{t("contact_role")}</p>
+
+                                    <div className="contact-social-links mt-1 flex gap-2">
+                                        {socials.map((social) => (
+                                            <a
+                                                key={social.id}
+                                                href={social.href}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                aria-label={social.name}
+                                                className="btn-ghost contact-social-link flex items-center justify-center"
+                                            >
+                                                {social.icon}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="contact-details-grid grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                {dataItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        aria-label={item.id === "location" ? `${t("contact_viewMap")}: ${t("contact_city")}` : undefined}
+                                        className="contact-detail-card flex min-w-0 items-center gap-4 rounded-xl p-4"
+                                    >
+                                        <span className="contact-detail-icon flex items-center justify-center rounded-lg p-2.5">
+                                            {item.icon}
+                                        </span>
+                                        <span className="min-w-0 flex-1">
+                                            <span className="block text-xs font-medium uppercase tracking-wide text-white/45">
+                                                {t(item.labelKey)}
+                                            </span>
+                                            <span className="mt-1 block break-words font-semibold text-white">
+                                                {item.value}
+                                            </span>
+                                        </span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        <aside className="contact-card-cta flex flex-col items-start">
+                            <span className="contact-availability">
+                                <span className="contact-availability-dot" />
+                                {t("contact_availability")}
+                            </span>
+                            <p className="contact-cta-eyebrow">{t("contact_cta_eyebrow")}</p>
+                            <h3 className="contact-cta-title">{t("about_question")}</h3>
+                            <p className="contact-cta-description">{t("contact_description")}</p>
+
+                            <div className="contact-email flex w-full items-center gap-3 rounded-xl px-3 py-2.5" role="group" aria-label={t("contact_email")}>
+                                <span className="min-w-0 flex-1 break-all text-sm font-medium text-white">{EMAIL}</span>
+                                <button
+                                    type="button"
+                                    className="btn-ghost contact-copy-button"
+                                    onClick={() => handleCopy(EMAIL)}
+                                    title={t("contact_copy")}
+                                    aria-label={t("contact_copy")}
+                                >
+                                    <MdContentCopy size={17} />
+                                </button>
+                            </div>
+
                             <a
-                                key={social.id}
-                                href={social.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={social.name}
-                                className="btn-ghost flex items-center justify-center rounded-full p-2.5 transition-transform hover:-rotate-4 hover:scale-110"
+                                href="/Dario_Martinez_Otano_CV.pdf"
+                                download
+                                className="btn-primary contact-cv-link mt-3 w-full rounded-lg px-5 py-3"
                             >
-                                {social.icon}
+                                {t("nav_downloadCv")}
                             </a>
-                        ))}
+                        </aside>
                     </div>
                 </div>
+            </section>
 
-                {/* Datos */}
-                <ul className="flex flex-1 min-h-0 flex-col divide-y divide-violet-500/20">
-                    {dataItems.map((item) => {
-                        const isCopied = copied === item.id;
-
-                        return (
-                            <li
-                                key={item.id}
-                                className="flex min-h-20 flex-1 items-center gap-4 p-5 transition-colors hover:bg-violet-500/5"
-                            >
-                                <div className="icon-pill h-10 w-10 shrink-0 text-violet-400">
-                                    <a href={item.href} target="_blank" rel="noreferrer" className="cursor-pointer">
-                                        {item.icon}
-                                    </a>
-                                </div>
-
-                                <div className="min-w-0 flex-1">
-                                    <p className="text-xs font-semibold uppercase tracking-wide text-(--muted)">
-                                        {t(item.labelKey)}
-                                    </p>
-                                    <a
-                                        href={item.href}
-                                        target={item.action === "link" ? "_blank" : undefined}
-                                        rel={item.action === "link" ? "noreferrer" : undefined}
-                                        className="break-all font-semibold transition-colors hover:text-violet-400"
-                                    >
-                                        {item.value}
-                                    </a>
-                                </div>
-
-                                {item.action === "copy" && (
-                                    <button
-                                        type="button"
-                                        onClick={() => handleCopy(item.id, item.value)}
-                                        aria-label={`${t("contact_copy")} ${item.value}`}
-                                        className="btn-ghost flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-xs font-semibold"
-                                    >
-                                        {isCopied ? <MdCheck size={16} /> : <MdContentCopy size={16} />}
-                                        <span className="hidden sm:inline">
-                                            {isCopied ? t("contact_copied") : t("contact_copy")}
-                                        </span>
-                                    </button>
-                                )}
-                            </li>
-                        );
-                    })}
-                </ul>
+            <div
+                role="status"
+                aria-live="polite"
+                className={`contact-toast fixed top-24 left-1/2 z-[9999] -translate-x-1/2 transition-all duration-500 ${
+                    copyStatus !== "idle" ? "is-visible" : ""
+                }`}
+            >
+                <span>{t(copyStatus === "error" ? "contact_copy_failed" : "contact_copied")}</span>
             </div>
-        </div>
+        </>
     );
 };
 
