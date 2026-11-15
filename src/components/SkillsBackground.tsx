@@ -1,7 +1,7 @@
 import { BsJavascript, BsTypescript } from "react-icons/bs";
-import { FaCss3, FaGit, FaGithub, FaHtml5, FaPython, FaReact } from "react-icons/fa";
+import { FaCss3, FaGit, FaGithub, FaHtml5, FaPhp, FaPython, FaReact, FaVuejs } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiDjango, SiExpress } from "react-icons/si";
+import { SiDjango, SiExpress, SiNestjs } from "react-icons/si";
 
 const SkillsBackground = () => {
     const skills = [
@@ -16,6 +16,9 @@ const SkillsBackground = () => {
         { id: 9, icon: <SiExpress />, name: "Express" },
         { id: 10, icon: <FaGit />, name: "Git" },
         { id: 11, icon: <FaGithub />, name: "Github" },
+        { id: 12, icon: <FaPhp/>, name: "Php"},
+        { id: 13, icon: <FaVuejs/>, name: "Vue"},
+        { id: 14, icon: <SiNestjs/>, name: "Nestjs"},
     ];
 
     const row1 = [...skills, ...skills, ...skills];
