@@ -2,6 +2,7 @@ import { FiBriefcase, FiCode, FiUsers } from "react-icons/fi";
 import { Button } from "./Button";
 import { useLanguage } from "../context/LanguageContext";
 import SkillsBackground from "./SkillsBackground";
+import { Reveal } from "./Reveal";
 import type { ReactNode } from "react";
 
 interface CardProps {
@@ -57,26 +58,31 @@ const About = () => {
                 <SkillsBackground />
             </div>
             <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 xl:grid-cols-2 items-center min-h-[inherit] py-16 lg:py-0 z-2">
-                <div className="relative flex flex-col gap-4 z-10">
+                <Reveal className="relative flex flex-col gap-4 z-10" offset="right">
                     <h2 className="font-black text-4xl tracking-tight title-glow">{t("about_title")}</h2>
 
                     <p className="font-semibold text-xl text-white leading-relaxed">{t("about_description")}</p>
 
-                    <div className="mt-4 flex flex-wrap gap-4 text-white">
+                    <Reveal className="mt-4 flex flex-wrap gap-4 text-white" offset="up" delay={160}>
                         <Button className="btn-primary px-6 py-2 transition duration-300 hover:scale-110">
                             {t("nav_downloadCv")}
                         </Button>
                         <a href="#contact" className="btn-ghost px-6 py-2 transition duration-300 hover:scale-110">
                             {t("nav_contact")}
                         </a>
-                    </div>
-                </div>
+                    </Reveal>
+                </Reveal>
 
                 <div className="relative items-center grid grid-cols-1 md:grid-cols-2 gap-4">
                     {infocards.map((info, index) => (
-                        <div key={info.id} className={index === 2 ? "md:col-span-2" : ""}>
+                        <Reveal
+                            key={info.id}
+                            className={index === 2 ? "md:col-span-2" : ""}
+                            offset="up"
+                            delay={120 + index * 120}
+                        >
                             <Card infocard={info} />
-                        </div>
+                        </Reveal>
                     ))}
                 </div>
             </div>

@@ -58,13 +58,13 @@ const Header = () => {
                     {isDesktop && 
                     <>
                         <Button icon className="">
-                            <a href="https://github.com/DarioM0715" target="_blank">
+                            <a href="https://github.com/DarioM0715" target="_blank" aria-label={t("a11y_github_profile")}>
                                 <FiGithub size={24} />
                             </a>
                         </Button>
 
                         <Button icon className="">
-                            <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank">
+                            <a href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank" aria-label={t("a11y_linkedin_profile")}>
                                 <FiLinkedin size={24} />
                             </a>
                         </Button>
@@ -151,10 +151,10 @@ const Header = () => {
                             <LanguageSwitcher />
 
                             <div className="flex items-center gap-2">
-                                <a className="mobile-menu-social" href="https://github.com/DarioM0715" target="_blank" rel="noreferrer" aria-label="GitHub">
+                                <a className="mobile-menu-social" href="https://github.com/DarioM0715" target="_blank" rel="noreferrer" aria-label={t("a11y_github_profile")}>
                                     <FiGithub size={19} />
                                 </a>
-                                <a className="mobile-menu-social" href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                                <a className="mobile-menu-social" href="https://www.linkedin.com/in/dario-martinez-otano-652833356" target="_blank" rel="noreferrer" aria-label={t("a11y_linkedin_profile")}>
                                     <FiLinkedin size={19} />
                                 </a>
                             </div>

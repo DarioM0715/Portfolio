@@ -3,13 +3,14 @@ import { useLanguage } from "../context/LanguageContext";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export const LanguageSwitcher = () => {
-    const { language, setLanguage } = useLanguage();
+    const { language, setLanguage, t } = useLanguage();
 
     return (
         <div className="flex gap-2">
             {language === "en" && (
                 <Button
                     onClick={() => setLanguage("es")}
+                    aria-label={t("a11y_switch_to_spanish")}
                     className={`btn-ghost px-3 py-1 text-sm transition-transform hover:scale-105 ${
                         language === "en" ? "opacity-100" : "opacity-60 hover:opacity-100"
                     }`}
@@ -24,6 +25,7 @@ export const LanguageSwitcher = () => {
             {language === "es" && (
                 <Button
                     onClick={() => setLanguage("en")}
+                    aria-label={t("a11y_switch_to_english")}
                     className={`btn-ghost px-3 py-1 text-sm transition-transform hover:scale-105 ${
                         language === "es" ? "opacity-100" : "opacity-60 hover:opacity-100"
                     }`}

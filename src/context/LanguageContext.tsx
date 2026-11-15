@@ -23,7 +23,15 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     useEffect(() => {
         localStorage.setItem("language", language);
+
+        const dictionary = translations[language];
         document.documentElement.lang = language;
+        document.title = dictionary.meta_title ?? document.title;
+
+        const description = document.querySelector('meta[name="description"]');
+        if (description && dictionary.meta_description) {
+            description.setAttribute("content", dictionary.meta_description);
+        }
     }, [language]);
 
     const t = (key: string, variables?: Record<string, string>): string => {

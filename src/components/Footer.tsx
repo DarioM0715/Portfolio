@@ -1,12 +1,13 @@
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useLanguage } from "../context/LanguageContext";
+import { Reveal } from "./Reveal";
 
 const Footer = () => {
     const { t } = useLanguage();
 
     return (
         <footer className="portfolio-footer page-gutter">
-            <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
+            <Reveal className="mx-auto flex w-full max-w-7xl flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between" offset="up">
                 <div className="flex max-w-xl flex-col gap-2">
                     <a className="portfolio-footer-brand w-fit text-lg font-black tracking-tight" href="#home">
                         Dario<span>.</span>portfolio
@@ -21,7 +22,7 @@ const Footer = () => {
                         href="https://github.com/DarioM0715"
                         target="_blank"
                         rel="noreferrer"
-                        aria-label="GitHub"
+                        aria-label={t("a11y_github_profile")}
                     >
                         <FiGithub size={18} />
                     </a>
@@ -30,12 +31,12 @@ const Footer = () => {
                         href="https://www.linkedin.com/in/dario-martinez-otano-652833356"
                         target="_blank"
                         rel="noreferrer"
-                        aria-label="LinkedIn"
+                        aria-label={t("a11y_linkedin_profile")}
                     >
                         <FiLinkedin size={18} />
                     </a>
                 </div>
-            </div>
+            </Reveal>
         </footer>
     );
 };
