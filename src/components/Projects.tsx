@@ -8,6 +8,7 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
 import { projectsData } from "../data/projects";
 import type { Project } from "../types";
 import { ProjectsModal } from "./Project/ProjectModal";
+import { Reveal } from "./Reveal";
 
 const Card = ({ project }: { project: Project }) => {
     const { title, image, urlProd, urlGithub, technologies } = project;
@@ -99,35 +100,45 @@ const Projects = () => {
     return (
         <div id="projects" className="projects-section page-gutter py-20 flex items-center justify-center flex-col gap-10">
             <div className="projects-section-heading mx-auto flex w-full max-w-7xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <div className="flex flex-col gap-3">
+                <Reveal className="flex flex-col gap-3" offset="right">
                     <span className="projects-eyebrow">{t("projects_eyebrow")}</span>
                     <h2 className="text-4xl font-black tracking-tight sm:text-5xl">{t("projects_title")}</h2>
                     <p className="max-w-2xl text-base font-semibold leading-relaxed text-(--text-secondary) sm:text-lg">{t("projects_description")}</p>
-                </div>
-                <div className="projects-count" aria-label={`${projects.length} ${t("projects_count_label")}`}>
+                </Reveal>
+                <Reveal
+                    className="projects-count"
+                    offset="left"
+                    delay={180}
+                    ariaLabel={`${projects.length} ${t("projects_count_label")}`}
+                >
                     <span>{String(projects.length).padStart(2, "0")}</span>
                     <span>{t("projects_count_label")}</span>
-                </div>
+                </Reveal>
             </div>
 
             <div className="w-full max-w-7xl">
                 <ul className="projects-grid">
                     {projects.map((project, index) => (
-                        <li
+                        <Reveal
                             key={project.id}
+                            as="li"
                             onClick={() => handleOpen(index)}
                             className={`projects-grid-item projects-grid-item-${index + 1}`}
+                            offset="up"
+                            delay={index * 110}
                         >
                             <Card project={project} />
-                        </li>
+                        </Reveal>
                     ))}
                 </ul>
             </div>
 
-            <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2 transition duration-300 hover:scale-105" href="https://github.com/DarioM0715">
-                <span>{t("projects_more_software")}</span>
-                <FiGithub size={24} />
-            </a>
+            <Reveal delay={160} offset="up">
+                <a className="flex text-nowrap gap-4 btn-ghost px-6 py-2 transition duration-300 hover:scale-105" href="https://github.com/DarioM0715">
+                    <span>{t("projects_more_software")}</span>
+                    <FiGithub size={24} />
+                </a>
+            </Reveal>
 
             <ProjectsModal projects={projects} isOpen={open} onClose={handleClose} index={activeIndex} title={t("projects_title")} />
         </div>

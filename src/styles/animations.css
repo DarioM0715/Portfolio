@@ -1,0 +1,82 @@
+/* Animaciones de entrada con offset y delay */
+.reveal {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up {
+    transform: translate3d(0, 30px, 0);
+}
+
+.reveal-down {
+    transform: translate3d(0, -30px, 0);
+}
+
+.reveal-left {
+    transform: translate3d(34px, 0, 0);
+}
+
+.reveal-right {
+    transform: translate3d(-34px, 0, 0);
+}
+
+.reveal-zoom {
+    transform: scale(0.94);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Brillo sutil que recorre algunos bloques al aparecer */
+.reveal-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 30%, rgba(216, 180, 254, 0.12) 50%, transparent 70%);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity 400ms ease;
+}
+
+.reveal-shine.is-visible::after {
+    opacity: 1;
+    animation: reveal-shine-sweep 1100ms ease 240ms 1;
+}
+
+@keyframes reveal-shine-sweep {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-up,
+    .reveal-down,
+    .reveal-left,
+    .reveal-right,
+    .reveal-zoom {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .reveal-shine::after {
+        display: none;
+    }
+}

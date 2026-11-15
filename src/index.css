@@ -5,6 +5,7 @@
 @import "./styles/contact.css";
 @import "./styles/footer.css";
 @import "./styles/patterns.css";
+@import "./styles/animations.css";
 @import "tailwindcss";
 
 @keyframes marquee {

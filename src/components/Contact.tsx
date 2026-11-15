@@ -3,6 +3,7 @@ import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
 import { MdContentCopy, MdGpsFixed } from "react-icons/md";
 import { useLanguage } from "../context/LanguageContext";
+import { Reveal } from "./Reveal";
 
 const EMAIL = "dariomartinezotano@gmail.com";
 const PHONE_DISPLAY = "+53 5684 2449";
@@ -55,12 +56,12 @@ const Contact = () => {
                 <div className="contact-section-backdrop absolute inset-0" />
 
                 <div className="contact-section-content relative mx-auto flex w-full max-w-7xl flex-col gap-8">
-                    <header className="contact-section-heading flex flex-col gap-3">
+                    <Reveal as="header" className="contact-section-heading flex flex-col gap-3" offset="right">
                         <span className="contact-section-eyebrow">{t("contact_eyebrow")}</span>
                         <h2 className="text-4xl font-black tracking-tight sm:text-5xl">{t("contact_title")}</h2>
-                    </header>
+                    </Reveal>
 
-                    <div className="contact-card grid w-full overflow-hidden rounded-2xl">
+                    <Reveal className="contact-card grid w-full overflow-hidden rounded-2xl" offset="up" delay={140}>
                         <div className="contact-card-main flex flex-col justify-between gap-10">
                             <div className="contact-profile flex items-center gap-6">
                                 <div className="contact-avatar flex h-24 w-24 items-center justify-center rounded-full text-2xl font-black">
@@ -144,7 +145,7 @@ const Contact = () => {
                                 {t("nav_downloadCv")}
                             </a>
                         </aside>
-                    </div>
+                    </Reveal>
                 </div>
             </section>
 
